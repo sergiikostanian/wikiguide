@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import CoreLocation.CLLocation
 
 public protocol WikiService {
     
-    func fetchArticles(for coordinate: CLLocationCoordinate2D, completion: @escaping (Result<[APIModel.Article], Error>) -> Void)
+    func fetchArticles(latitude: Double, longitude: Double, completion: @escaping (Result<[APIModel.Article], Error>) -> Void)
     
 }

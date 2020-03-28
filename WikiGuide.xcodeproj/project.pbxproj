@@ -8,23 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623B242F253800FA91DF /* AppDelegate.swift */; };
-		82D96240242F253800FA91DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* ViewController.swift */; };
-		82D96243242F253800FA91DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Main.storyboard */; };
+		82D96240242F253800FA91DF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* MapVC.swift */; };
+		82D96243242F253800FA91DF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Map.storyboard */; };
 		82D96245242F253E00FA91DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D96244242F253E00FA91DF /* Assets.xcassets */; };
 		82D96248242F253E00FA91DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96246242F253E00FA91DF /* LaunchScreen.storyboard */; };
 		82D96253242F377000FA91DF /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96252242F377000FA91DF /* DependencyContainer.swift */; };
 		82D96255242F37B500FA91DF /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96254242F37B500FA91DF /* DependencyManager.swift */; };
 		82D96258242F37E800FA91DF /* ObserverContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96257242F37E800FA91DF /* ObserverContainer.swift */; };
 		82D9625B242F43BB00FA91DF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625A242F43BB00FA91DF /* HTTPClient.swift */; };
-		82D9625D242F45B300FA91DF /* WikipediaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625C242F45B300FA91DF /* WikipediaAPI.swift */; };
+		82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625C242F45B300FA91DF /* WikiAPI.swift */; };
 		82D96260242F46A900FA91DF /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625F242F46A900FA91DF /* APIModel.swift */; };
+		82D96266242F66D800FA91DF /* MapScreenStateSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */; };
+		82D96268242F96F100FA91DF /* WikiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96267242F96F100FA91DF /* WikiService.swift */; };
+		82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9626B242F98EC00FA91DF /* LocationService.swift */; };
+		82D9626E242F98F700FA91DF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9626D242F98F700FA91DF /* LocationManager.swift */; };
+		82D96270242F9BEE00FA91DF /* LocationServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9626F242F9BEE00FA91DF /* LocationServiceObserver.swift */; };
+		82D96274242FAA6000FA91DF /* DependencyInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96273242FAA6000FA91DF /* DependencyInjectable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		82D96238242F253800FA91DF /* WikiGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82D9623F242F253800FA91DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		82D96242242F253800FA91DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		82D96242242F253800FA91DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		82D96244242F253E00FA91DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82D96247242F253E00FA91DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82D96249242F253E00FA91DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,8 +39,14 @@
 		82D96254242F37B500FA91DF /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		82D96257242F37E800FA91DF /* ObserverContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverContainer.swift; sourceTree = "<group>"; };
 		82D9625A242F43BB00FA91DF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		82D9625C242F45B300FA91DF /* WikipediaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaAPI.swift; sourceTree = "<group>"; };
+		82D9625C242F45B300FA91DF /* WikiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiAPI.swift; sourceTree = "<group>"; };
 		82D9625F242F46A900FA91DF /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenStateSwitcher.swift; sourceTree = "<group>"; };
+		82D96267242F96F100FA91DF /* WikiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiService.swift; sourceTree = "<group>"; };
+		82D9626B242F98EC00FA91DF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		82D9626D242F98F700FA91DF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		82D9626F242F9BEE00FA91DF /* LocationServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceObserver.swift; sourceTree = "<group>"; };
+		82D96273242FAA6000FA91DF /* DependencyInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				82D96250242F371E00FA91DF /* Services */,
-				82D9623F242F253800FA91DF /* ViewController.swift */,
+				82D96261242F52AF00FA91DF /* Map Screen */,
 				82D9623B242F253800FA91DF /* AppDelegate.swift */,
-				82D96241242F253800FA91DF /* Main.storyboard */,
 				82D96244242F253E00FA91DF /* Assets.xcassets */,
 				82D96246242F253E00FA91DF /* LaunchScreen.storyboard */,
 				82D96249242F253E00FA91DF /* Info.plist */,
@@ -83,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				82D96251242F374D00FA91DF /* Dependency Injection */,
+				82D9626A242F98DA00FA91DF /* Location */,
 				82D96259242F3E4100FA91DF /* Network */,
 				82D96256242F37D100FA91DF /* Observer Container */,
 			);
@@ -94,6 +106,7 @@
 			children = (
 				82D96252242F377000FA91DF /* DependencyContainer.swift */,
 				82D96254242F37B500FA91DF /* DependencyManager.swift */,
+				82D96273242FAA6000FA91DF /* DependencyInjectable.swift */,
 			);
 			path = "Dependency Injection";
 			sourceTree = "<group>";
@@ -109,9 +122,9 @@
 		82D96259242F3E4100FA91DF /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				82D9625E242F460300FA91DF /* Model */,
 				82D9625A242F43BB00FA91DF /* HTTPClient.swift */,
-				82D9625C242F45B300FA91DF /* WikipediaAPI.swift */,
+				82D9625E242F460300FA91DF /* Model */,
+				82D96269242F970300FA91DF /* Wiki */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -122,6 +135,35 @@
 				82D9625F242F46A900FA91DF /* APIModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		82D96261242F52AF00FA91DF /* Map Screen */ = {
+			isa = PBXGroup;
+			children = (
+				82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */,
+				82D9623F242F253800FA91DF /* MapVC.swift */,
+				82D96241242F253800FA91DF /* Map.storyboard */,
+			);
+			path = "Map Screen";
+			sourceTree = "<group>";
+		};
+		82D96269242F970300FA91DF /* Wiki */ = {
+			isa = PBXGroup;
+			children = (
+				82D96267242F96F100FA91DF /* WikiService.swift */,
+				82D9625C242F45B300FA91DF /* WikiAPI.swift */,
+			);
+			path = Wiki;
+			sourceTree = "<group>";
+		};
+		82D9626A242F98DA00FA91DF /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				82D9626B242F98EC00FA91DF /* LocationService.swift */,
+				82D9626D242F98F700FA91DF /* LocationManager.swift */,
+				82D9626F242F9BEE00FA91DF /* LocationServiceObserver.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +226,7 @@
 			files = (
 				82D96248242F253E00FA91DF /* LaunchScreen.storyboard in Resources */,
 				82D96245242F253E00FA91DF /* Assets.xcassets in Resources */,
-				82D96243242F253800FA91DF /* Main.storyboard in Resources */,
+				82D96243242F253800FA91DF /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,13 +237,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82D96240242F253800FA91DF /* ViewController.swift in Sources */,
+				82D96240242F253800FA91DF /* MapVC.swift in Sources */,
 				82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */,
 				82D9625B242F43BB00FA91DF /* HTTPClient.swift in Sources */,
+				82D96268242F96F100FA91DF /* WikiService.swift in Sources */,
+				82D96266242F66D800FA91DF /* MapScreenStateSwitcher.swift in Sources */,
 				82D96255242F37B500FA91DF /* DependencyManager.swift in Sources */,
+				82D96270242F9BEE00FA91DF /* LocationServiceObserver.swift in Sources */,
+				82D96274242FAA6000FA91DF /* DependencyInjectable.swift in Sources */,
+				82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */,
 				82D96260242F46A900FA91DF /* APIModel.swift in Sources */,
+				82D9626E242F98F700FA91DF /* LocationManager.swift in Sources */,
 				82D96253242F377000FA91DF /* DependencyContainer.swift in Sources */,
-				82D9625D242F45B300FA91DF /* WikipediaAPI.swift in Sources */,
+				82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */,
 				82D96258242F37E800FA91DF /* ObserverContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,12 +257,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		82D96241242F253800FA91DF /* Main.storyboard */ = {
+		82D96241242F253800FA91DF /* Map.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				82D96242242F253800FA91DF /* Base */,
 			);
-			name = Main.storyboard;
+			name = Map.storyboard;
 			sourceTree = "<group>";
 		};
 		82D96246242F253E00FA91DF /* LaunchScreen.storyboard */ = {

@@ -10,7 +10,7 @@ import UIKit
 
 struct MapScreenStateSwitcher {
     
-    private let mapVC: MapVC
+    private weak var mapVC: MapVC?
     
     init(mapVC: MapVC) {
         self.mapVC = mapVC
