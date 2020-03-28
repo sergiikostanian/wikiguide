@@ -1,5 +1,5 @@
 //
-//  WikipediaAPI.swift
+//  WikiAPI.swift
 //  WikiGuide
 //
 //  Created by Serhii Kostanian on 28.03.2020.
@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import CoreLocation.CLLocation
 
-public struct WikipediaAPI {
+public struct WikiAPI: WikiService {
     
     private let baseURL = URL(string: "https://en.wikipedia.org")!
     private let httpClient = HTTPClient()
