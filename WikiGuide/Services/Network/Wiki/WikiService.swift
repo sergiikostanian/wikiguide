@@ -8,8 +8,13 @@
 
 import Foundation
 
+/**
+ This service provides data from Wikipedia available via public API.
+ For more detail see [Wikipedia API](https://en.wikipedia.org/w/api.php).
+ */
 public protocol WikiService {
     
-    func fetchArticles(latitude: Double, longitude: Double, completion: @escaping (Result<[APIModel.Article], Error>) -> Void)
+    /// Fetches wiki articles having specified coordinates that are located in a nearby area.
+    func fetchArticles(latitude: Double, longitude: Double, completion: @escaping (Result<[WikiArticle], Error>) -> Void)
     
 }

@@ -10,19 +10,48 @@ import Foundation
 import Combine
 import CoreLocation.CLLocation
 
+enum WikiError: Error {
+    case fetchArticlesBadRequest
+}
+
 public class WikiAPI {
     
-    private let baseURL = URL(string: "https://en.wikipedia.org")!
+    private let baseURL = URL(string: "https://en.wikipedia.org/w/api.php")!
     private let httpClient = HTTPClient()
 
 }
 
 extension WikiAPI: WikiService {
     
-    public func fetchArticles(latitude: Double, longitude: Double, completion: @escaping (Result<[APIModel.Article], Error>) -> Void) {
-        let request = URLRequest(url: baseURL.appendingPathComponent("api.php?action=query&list=geosearch&gsradius=10000&gscoord=\(latitude)|\(longitude)&gslimit=50&format=json"))
+    public func fetchArticles(latitude: Double, longitude: Double, completion: @escaping (Result<[WikiArticle], Error>) -> Void) {
+        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+            completion(.failure(WikiError.fetchArticlesBadRequest))
+            return
+        }
         
-        httpClient.perform(request, completion: completion)
+        components.queryItems = [
+            URLQueryItem(name: "action", value: "query"),
+            URLQueryItem(name: "list", value: "geosearch"),
+            URLQueryItem(name: "gsradius", value: "1000"),
+            URLQueryItem(name: "gscoord", value: "\(latitude)|\(longitude)"),
+            URLQueryItem(name: "gslimit", value: "50"),
+            URLQueryItem(name: "format", value: "json")
+        ]
+        
+        guard let url = components.url else {
+            completion(.failure(WikiError.fetchArticlesBadRequest))
+            return
+        }
+        
+        httpClient.perform(URLRequest(url: url)) { (result: Result<APIModel.WikiArticlesResponse, Error>) in
+            switch result {
+            case .success(let response):
+                let articles = response.query.geosearch.map({ APIModelMapper.makeWikiArticle(from: $0) })
+                completion(.success(articles))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     /// The assignments requirement clearly states that the app must run in native iOS 12
@@ -37,10 +66,25 @@ extension WikiAPI: WikiService {
     /// }, receiveValue: { (articles) in
     /// })
     /// ````
-    @available(iOS 13.0, *)
-    public func fetchArticles(latitude: Double, longitude: Double) -> AnyPublisher<[APIModel.Article], Error> {
-        let request = URLRequest(url: baseURL.appendingPathComponent("api.php?action=query&list=geosearch&gsradius=10000&gscoord=\(latitude)|\(longitude)&gslimit=50&format=json"))
-        
-        return httpClient.perform(request).eraseToAnyPublisher()
-    }
+//    @available(iOS 13.0, *)
+//    public func fetchArticles(latitude: Double, longitude: Double) throws -> AnyPublisher<[WikiArticle], Error> {
+//        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+//            throw WikiError.fetchArticlesBadRequest
+//        }
+//        
+//        components.queryItems = [
+//            URLQueryItem(name: "action", value: "query"),
+//            URLQueryItem(name: "list", value: "geosearch"),
+//            URLQueryItem(name: "gsradius", value: "1000"),
+//            URLQueryItem(name: "gscoord", value: "\(latitude)|\(longitude)"),
+//            URLQueryItem(name: "gslimit", value: "50"),
+//            URLQueryItem(name: "format", value: "json")
+//        ]
+//        
+//        guard let url = components.url else {
+//            throw WikiError.fetchArticlesBadRequest
+//        }
+//        
+//        return httpClient.perform(URLRequest(url: url)).eraseToAnyPublisher()
+//    }
 }

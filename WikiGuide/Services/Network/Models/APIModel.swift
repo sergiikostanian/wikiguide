@@ -8,10 +8,9 @@
 
 import Foundation
 
-public enum APIModel {
-    
-    public struct Article: Codable {
-        // TODO: implement
-    }
-    
+/**
+ This is a namespace for all API model decodable structures.
+ Extend with structures to parse your API responses into them.
+ */
+enum APIModel {
 }
