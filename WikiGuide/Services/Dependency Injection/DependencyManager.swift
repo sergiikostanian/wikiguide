@@ -56,7 +56,13 @@ final public class DependencyManager {
     }
     
     private func setupNormalContainer() {
-        // TODO: implement
+        container.register { _ in
+            WikiAPI() as WikiService
+        }
+        
+        container.register { _ in
+            LocationManager() as LocationService
+        }
         
         observers.enumerateObservers { (observer) in
             observer.dependencyManager(self, didEndSetupContainer: .normal)
