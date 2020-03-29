@@ -32,7 +32,7 @@ extension WikiAPI: WikiService {
         components.queryItems = [
             URLQueryItem(name: "action", value: "query"),
             URLQueryItem(name: "list", value: "geosearch"),
-            URLQueryItem(name: "gsradius", value: "1000"),
+            URLQueryItem(name: "gsradius", value: "5000"),
             URLQueryItem(name: "gscoord", value: "\(latitude)|\(longitude)"),
             URLQueryItem(name: "gslimit", value: "50"),
             URLQueryItem(name: "format", value: "json")
@@ -44,12 +44,14 @@ extension WikiAPI: WikiService {
         }
         
         httpClient.perform(URLRequest(url: url)) { (result: Result<APIModel.WikiArticlesResponse, Error>) in
-            switch result {
-            case .success(let response):
-                let articles = response.query.geosearch.map({ APIModelMapper.makeWikiArticle(from: $0) })
-                completion(.success(articles))
-            case .failure(let error):
-                completion(.failure(error))
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    let articles = response.query.geosearch.map({ APIModelMapper.makeWikiArticle(from: $0) })
+                    completion(.success(articles))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }

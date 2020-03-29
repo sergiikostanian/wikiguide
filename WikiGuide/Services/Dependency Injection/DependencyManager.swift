@@ -55,13 +55,26 @@ final public class DependencyManager {
         return try container.resolve()
     }
     
+    // MARK: - Container Setup
     private func setupNormalContainer() {
+        
+        // MARK: Services
         container.register { _ in
             WikiAPI() as WikiService
         }
         
         container.register { _ in
             LocationManager() as LocationService
+        }
+        
+        // MARK: ViewModels
+        container.register { container -> MapViewModeling in
+            let locationService: LocationService = try! container.resolve()
+            let wikiService: WikiService = try! container.resolve()
+            
+            return MapViewModel(dependencyManager: self, 
+                                locationService: locationService, 
+                                wikiService: wikiService)
         }
         
         observers.enumerateObservers { (observer) in

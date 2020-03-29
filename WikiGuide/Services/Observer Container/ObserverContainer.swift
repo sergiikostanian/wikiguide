@@ -53,6 +53,7 @@ struct ObserverContainer<Observer> {
     }
 }
 
+// MARK: - Internal Container
 private extension ObserverContainer {
     
     /// Internal hashable container for one observer object. 

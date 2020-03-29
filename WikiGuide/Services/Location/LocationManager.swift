@@ -36,6 +36,7 @@ public class LocationManager: NSObject {
 
 }
 
+// MARK: - LocationService
 extension LocationManager: LocationService {
 
     public func add(observer: LocationServiceObserver) {
@@ -56,6 +57,7 @@ extension LocationManager: LocationService {
     
 }
 
+// MARK: - CLLocationManagerDelegate
 extension LocationManager: CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

@@ -27,6 +27,10 @@
 		82D96276242FE5EB00FA91DF /* WikiArticlesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96275242FE5EB00FA91DF /* WikiArticlesResponse.swift */; };
 		82D962792430755800FA91DF /* WikiArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D962782430755800FA91DF /* WikiArticle.swift */; };
 		82D9627B2430777C00FA91DF /* APIModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9627A2430777C00FA91DF /* APIModelMapper.swift */; };
+		82D9627D2430847B00FA91DF /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9627C2430847B00FA91DF /* MapViewModel.swift */; };
+		82D96280243099D600FA91DF /* MapViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9627F243099D600FA91DF /* MapViewModeling.swift */; };
+		82D962832430A7B500FA91DF /* AlertableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D962822430A7B500FA91DF /* AlertableViewController.swift */; };
+		82D962862430CB6F00FA91DF /* WikiArticleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D962852430CB6F00FA91DF /* WikiArticleAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		82D96275242FE5EB00FA91DF /* WikiArticlesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticlesResponse.swift; sourceTree = "<group>"; };
 		82D962782430755800FA91DF /* WikiArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticle.swift; sourceTree = "<group>"; };
 		82D9627A2430777C00FA91DF /* APIModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModelMapper.swift; sourceTree = "<group>"; };
+		82D9627C2430847B00FA91DF /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		82D9627F243099D600FA91DF /* MapViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModeling.swift; sourceTree = "<group>"; };
+		82D962822430A7B500FA91DF /* AlertableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertableViewController.swift; sourceTree = "<group>"; };
+		82D962852430CB6F00FA91DF /* WikiArticleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			children = (
 				82D962772430753900FA91DF /* Entities */,
 				82D96250242F371E00FA91DF /* Services */,
+				82D962812430A79800FA91DF /* Helpers */,
 				82D96261242F52AF00FA91DF /* Map Screen */,
 				82D9623B242F253800FA91DF /* AppDelegate.swift */,
 				82D96244242F253E00FA91DF /* Assets.xcassets */,
@@ -149,9 +158,9 @@
 		82D96261242F52AF00FA91DF /* Map Screen */ = {
 			isa = PBXGroup;
 			children = (
-				82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */,
-				82D9623F242F253800FA91DF /* MapVC.swift */,
-				82D96241242F253800FA91DF /* Map.storyboard */,
+				82D962842430CB5200FA91DF /* Entities */,
+				82D9627E243099C100FA91DF /* ViewModel */,
+				82D962872430DF5D00FA91DF /* View */,
 			);
 			path = "Map Screen";
 			sourceTree = "<group>";
@@ -181,6 +190,41 @@
 				82D962782430755800FA91DF /* WikiArticle.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		82D9627E243099C100FA91DF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				82D9627F243099D600FA91DF /* MapViewModeling.swift */,
+				82D9627C2430847B00FA91DF /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		82D962812430A79800FA91DF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				82D962822430A7B500FA91DF /* AlertableViewController.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		82D962842430CB5200FA91DF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				82D962852430CB6F00FA91DF /* WikiArticleAnnotation.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		82D962872430DF5D00FA91DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82D9623F242F253800FA91DF /* MapVC.swift */,
+				82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */,
+				82D96241242F253800FA91DF /* Map.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +300,7 @@
 			files = (
 				82D96240242F253800FA91DF /* MapVC.swift in Sources */,
 				82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */,
+				82D96280243099D600FA91DF /* MapViewModeling.swift in Sources */,
 				82D9625B242F43BB00FA91DF /* HTTPClient.swift in Sources */,
 				82D9627B2430777C00FA91DF /* APIModelMapper.swift in Sources */,
 				82D96268242F96F100FA91DF /* WikiService.swift in Sources */,
@@ -264,13 +309,16 @@
 				82D96255242F37B500FA91DF /* DependencyManager.swift in Sources */,
 				82D96270242F9BEE00FA91DF /* LocationServiceObserver.swift in Sources */,
 				82D96274242FAA6000FA91DF /* DependencyInjectable.swift in Sources */,
+				82D962832430A7B500FA91DF /* AlertableViewController.swift in Sources */,
 				82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */,
 				82D96260242F46A900FA91DF /* APIModel.swift in Sources */,
 				82D9626E242F98F700FA91DF /* LocationManager.swift in Sources */,
 				82D962792430755800FA91DF /* WikiArticle.swift in Sources */,
 				82D96253242F377000FA91DF /* DependencyContainer.swift in Sources */,
 				82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */,
+				82D962862430CB6F00FA91DF /* WikiArticleAnnotation.swift in Sources */,
 				82D96258242F37E800FA91DF /* ObserverContainer.swift in Sources */,
+				82D9627D2430847B00FA91DF /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
