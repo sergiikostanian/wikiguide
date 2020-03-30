@@ -14,6 +14,16 @@ import Foundation
 enum APIModelMapper {
     
     static func makeWikiArticle(from apiModel: APIModel.WikiArticlesResponse.Query.Article) -> WikiArticle {
-        return WikiArticle(pageId: apiModel.pageid, title: apiModel.title, latitude: apiModel.lat, longitude: apiModel.lon)
+        return WikiArticle(pageId: apiModel.pageid, 
+                           title: apiModel.title, 
+                           latitude: apiModel.lat, 
+                           longitude: apiModel.lon)
+    }
+    
+    static func makeWikiArticleDetails(from apiModel: APIModel.WikiArticleDetailsResponse.Query.ArticleDetails) -> WikiArticleDetails {
+        return WikiArticleDetails(pageId: apiModel.pageid, 
+                                  title: apiModel.title, 
+                                  description: apiModel.description, 
+                                  images: apiModel.images.map({$0.title}))
     }
 }

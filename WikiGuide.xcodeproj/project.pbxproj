@@ -12,6 +12,8 @@
 		8247C8042431D27200BB7366 /* MapMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8032431D27200BB7366 /* MapMode.swift */; };
 		8247C8062431D37A00BB7366 /* MapArticleDetailsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8052431D37A00BB7366 /* MapArticleDetailsMode.swift */; };
 		8247C8082431D98800BB7366 /* MapNavigationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8072431D98800BB7366 /* MapNavigationMode.swift */; };
+		8247C80B2431F2BF00BB7366 /* WikiArticleDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C80A2431F2BF00BB7366 /* WikiArticleDetailsResponse.swift */; };
+		8247C80D2431F41600BB7366 /* WikiArticleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C80C2431F41600BB7366 /* WikiArticleDetails.swift */; };
 		82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623B242F253800FA91DF /* AppDelegate.swift */; };
 		82D96240242F253800FA91DF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* MapVC.swift */; };
 		82D96243242F253800FA91DF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Map.storyboard */; };
@@ -45,6 +47,8 @@
 		8247C8032431D27200BB7366 /* MapMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMode.swift; sourceTree = "<group>"; };
 		8247C8052431D37A00BB7366 /* MapArticleDetailsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapArticleDetailsMode.swift; sourceTree = "<group>"; };
 		8247C8072431D98800BB7366 /* MapNavigationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationMode.swift; sourceTree = "<group>"; };
+		8247C80A2431F2BF00BB7366 /* WikiArticleDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleDetailsResponse.swift; sourceTree = "<group>"; };
+		8247C80C2431F41600BB7366 /* WikiArticleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleDetails.swift; sourceTree = "<group>"; };
 		82D96238242F253800FA91DF /* WikiGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				82D9625F242F46A900FA91DF /* APIModel.swift */,
 				82D9627A2430777C00FA91DF /* APIModelMapper.swift */,
 				82D96275242FE5EB00FA91DF /* WikiArticlesResponse.swift */,
+				8247C80A2431F2BF00BB7366 /* WikiArticleDetailsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				82D962782430755800FA91DF /* WikiArticle.swift */,
+				8247C80C2431F41600BB7366 /* WikiArticleDetails.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */,
 				82D96280243099D600FA91DF /* MapViewModeling.swift in Sources */,
 				82D9625B242F43BB00FA91DF /* HTTPClient.swift in Sources */,
+				8247C80D2431F41600BB7366 /* WikiArticleDetails.swift in Sources */,
 				8247C8022431D21800BB7366 /* MapMainMode.swift in Sources */,
 				82D9627B2430777C00FA91DF /* APIModelMapper.swift in Sources */,
 				82D96268242F96F100FA91DF /* WikiService.swift in Sources */,
@@ -348,6 +355,7 @@
 				82D96274242FAA6000FA91DF /* DependencyInjectable.swift in Sources */,
 				82D962832430A7B500FA91DF /* AlertableViewController.swift in Sources */,
 				82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */,
+				8247C80B2431F2BF00BB7366 /* WikiArticleDetailsResponse.swift in Sources */,
 				82D96260242F46A900FA91DF /* APIModel.swift in Sources */,
 				82D9626E242F98F700FA91DF /* LocationManager.swift in Sources */,
 				82D962792430755800FA91DF /* WikiArticle.swift in Sources */,

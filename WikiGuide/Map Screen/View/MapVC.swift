@@ -9,8 +9,7 @@
 import UIKit
 import MapKit
 
-// TODO: Rename to MapState
-enum MapScreenState {
+enum MapState {
     case main
     case articleDetails
     case navigation
@@ -23,7 +22,7 @@ final class MapVC: UIViewController, AlertableViewController {
     private var viewModel: MapViewModeling!
     
     // MARK: State Properties
-    private var state: MapScreenState?
+    private var state: MapState?
     private var mode: MapMode?
 
     // MARK: View Properties
@@ -35,7 +34,7 @@ final class MapVC: UIViewController, AlertableViewController {
         setState(.main)
     }
     
-    func setState(_ state: MapScreenState, animated: Bool = true) {
+    func setState(_ state: MapState, animated: Bool = true) {
         guard self.state != state else { return }
         
         let newMode: MapMode
@@ -56,6 +55,7 @@ final class MapVC: UIViewController, AlertableViewController {
     }
 }
 
+// MARK: - DependencyInjectable
 extension MapVC: DependencyInjectable {
     
     func setupDependencies(with dependencyManager: DependencyManager) {

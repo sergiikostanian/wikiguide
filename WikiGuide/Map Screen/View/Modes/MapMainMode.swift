@@ -77,6 +77,7 @@ final class MapMainMode: NSObject, MapMode {
 
 }
 
+// MARK: - MKMapViewDelegate
 extension MapMainMode: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

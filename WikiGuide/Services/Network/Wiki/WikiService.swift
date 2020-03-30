@@ -17,4 +17,5 @@ public protocol WikiService {
     /// Fetches wiki articles having specified coordinates that are located in a nearby area.
     func fetchArticles(latitude: Double, longitude: Double, completion: @escaping (Result<[WikiArticle], Error>) -> Void)
     
+    func fetchArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void)
 }

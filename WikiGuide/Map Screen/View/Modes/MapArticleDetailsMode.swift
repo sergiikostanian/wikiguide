@@ -30,10 +30,10 @@ final class MapArticleDetailsMode: NSObject, MapMode {
 
         switch oldMode {
         case is MapMainMode:            
-            guard let center = context.selectedAnnotation?.coordinate else { return }
+            guard let selectedAnnotation = context.selectedAnnotation else { return }
             
             let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
-            let region = MKCoordinateRegion(center: center, span: span)
+            let region = MKCoordinateRegion(center: selectedAnnotation.coordinate, span: span)
             let insets = UIEdgeInsets(top: 0, left: 0, bottom: mapVC.view.bounds.height * (2/3) - 50, right: 0)
             
             mapView.setVisibleMapRect(region.convertToMapRect(), edgePadding: insets, animated: true)
@@ -46,6 +46,9 @@ final class MapArticleDetailsMode: NSObject, MapMode {
                 self?.mapVC.setState(.main)
             }
             
+            mapViewModel.fetchWikiArticleDetails(by: selectedAnnotation.article.pageId) { [weak self] (result) in
+                print(result)
+            }
         default:
             preconditionFailure("Unknown MapMode transition")
         }

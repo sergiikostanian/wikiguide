@@ -55,6 +55,38 @@ extension WikiAPI: WikiService {
             }
         }
     }
+    
+    public func fetchArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void) {
+        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+            completion(.failure(WikiError.fetchArticlesBadRequest))
+            return
+        }
+        
+        components.queryItems = [
+            URLQueryItem(name: "action", value: "query"),
+            URLQueryItem(name: "prop", value: "info|description|images"),
+            URLQueryItem(name: "pageids", value: "\(id)"),
+            URLQueryItem(name: "format", value: "json")
+        ]
+        
+        guard let url = components.url else {
+            completion(.failure(WikiError.fetchArticlesBadRequest))
+            return
+        }
+        
+        httpClient.perform(URLRequest(url: url)) { (result: Result<APIModel.WikiArticleDetailsResponse, Error>) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    guard let apiModel = response.query.pages.values.first else { return }
+                    let details = APIModelMapper.makeWikiArticleDetails(from: apiModel)
+                    completion(.success(details))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 
     /// The assignments requirement clearly states that the app must run in native iOS 12
     /// and unfortunately `Combine` framework is available only from iOS 13, but anyway 

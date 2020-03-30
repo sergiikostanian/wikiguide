@@ -15,10 +15,12 @@ final class MapViewModel {
     
     weak var delegate: MapViewModelDelegate?
     
+    // MARK: Dependencies
     private let dependencyManager: DependencyManager
     private let locationService: LocationService
     private let wikiService: WikiService
 
+    // MARK: Completion Holders
     private var fetchUserLocationCompletion: ((Result<Location, Error>) -> Void)?
     
     init(dependencyManager: DependencyManager, locationService: LocationService, wikiService: WikiService) {
@@ -52,6 +54,10 @@ extension MapViewModel: MapViewModeling {
     
     func fetchWikiArticles(for location: Location, completion: @escaping (Result<[WikiArticle], Error>) -> Void) {
         wikiService.fetchArticles(latitude: location.latitude, longitude: location.longitude, completion: completion)
+    }
+    
+    func fetchWikiArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void) {
+        wikiService.fetchArticleDetails(by: id, completion: completion)
     }
 }
 

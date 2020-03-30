@@ -24,6 +24,7 @@ protocol MapViewModeling {
     var delegate: MapViewModelDelegate? { get set }
     
     func fetchUserLocation(completion: @escaping (Result<Location, Error>) -> Void)
+    
     func fetchWikiArticles(for location: Location, completion: @escaping (Result<[WikiArticle], Error>) -> Void)
-
+    func fetchWikiArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void)
 }
