@@ -38,20 +38,4 @@ struct HTTPClient {
             }
         }.resume()
     }
-
-    /// The assignments requirement clearly states that the app must run in native iOS 12
-    /// and unfortunately `Combine` framework is available only from iOS 13, but anyway 
-    /// I decided to implement example method that uses Combine to show how would I do this 
-    /// if deployment target will be iOS 13.
-    @available(iOS 13.0, *)
-    func perform<Value: Decodable>(_ request: URLRequest, decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<Value, Error> {
-        
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .tryMap { result -> Value in
-                let value = try decoder.decode(Value.self, from: result.data)
-                return value
-        }
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
 }

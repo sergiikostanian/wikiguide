@@ -24,6 +24,6 @@ enum APIModelMapper {
         return WikiArticleDetails(pageId: apiModel.pageid, 
                                   title: apiModel.title, 
                                   description: apiModel.description, 
-                                  images: apiModel.images.map({$0.title}))
+                                  imageFiles: apiModel.images.map({$0.title}))
     }
 }

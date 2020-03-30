@@ -12,5 +12,5 @@ public struct WikiArticleDetails {
     let pageId: Int
     let title: String
     let description: String
-    let images: [String]
+    let imageFiles: [String]
 }

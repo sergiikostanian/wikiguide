@@ -14,7 +14,6 @@ extension APIModel {
         struct Query: Decodable {
             struct ArticleDetails: Decodable {
                 struct Image: Decodable {
-                    let ns: Int
                     let title: String
                 }
                 let pageid: Int
