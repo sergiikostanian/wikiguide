@@ -107,6 +107,7 @@ extension WikiAPI: WikiService {
             URLQueryItem(name: "titles", value: "\(file)"),
             URLQueryItem(name: "prop", value: "imageinfo"),
             URLQueryItem(name: "iiprop", value: "url"),
+            URLQueryItem(name: "iiurlwidth", value: "360"),
             URLQueryItem(name: "format", value: "json")
         ]
         
@@ -119,7 +120,7 @@ extension WikiAPI: WikiService {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    guard let urlString = response.query.pages.values.first?.imageinfo.first?.url,
+                    guard let urlString = response.query.pages.values.first?.imageinfo.first?.thumburl,
                         let url = URL(string: urlString) else {
                         completion(nil)
                         return

@@ -99,7 +99,7 @@ final class WikiArticleDetailsView: UIView {
     }
     
     private func didSetImages(_ images: [UIImage]) {
-        imagesLoadingIndicatior.isHidden = true
+        imagesLoadingIndicatior.stopAnimating()
         imagesCollectionView.isHidden = images.isEmpty
         imagesCollectionView.reloadData()
     }
