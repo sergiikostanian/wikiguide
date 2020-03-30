@@ -22,6 +22,7 @@ final class WikiArticleDetailsView: UIView {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet weak var imagesLoadingIndicatior: UIActivityIndicatorView!
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
     @IBOutlet private weak var hidingConstraint: NSLayoutConstraint!
     
@@ -65,7 +66,10 @@ final class WikiArticleDetailsView: UIView {
     
     private func setup() {
         setupOverlayTapGestureRecognizer()
-                
+        
+        titleLabel.text = nil
+        descriptionLabel.text = nil
+        imagesCollectionView.isHidden = true
         imagesCollectionView.register(ArticleImageCell.self, forCellWithReuseIdentifier: ArticleImageCell.key)
         
         hidingConstraint.isActive = true
@@ -85,6 +89,8 @@ final class WikiArticleDetailsView: UIView {
     }
     
     private func didSetImages(_ images: [UIImage]) {
+        imagesLoadingIndicatior.stopAnimating()
+        imagesCollectionView.isHidden = images.isEmpty
         imagesCollectionView.reloadData()
     }
 }
