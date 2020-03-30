@@ -8,12 +8,13 @@
 
 import UIKit
 
+// MARK: - Adding Subview
 extension UIView {
     
     /// Adds subview along with every edge constraints with zero insets.
     /// 
     /// - Parameter view: Subview to add.
-    func addSubviewAndStretchToFill(_ view: UIView) {
+    public func addSubviewAndStretchToFill(_ view: UIView) {
         addSubviewAndStretch(view, edgeInsets: .zero)
     }
     
@@ -22,7 +23,7 @@ extension UIView {
     /// - Parameters:
     ///   - view: Subview to add.
     ///   - edgeInsets: Edge insets that will be applied to edge constraints constants.
-    func addSubviewAndStretch(_ view: UIView, edgeInsets: UIEdgeInsets) {
+    public func addSubviewAndStretch(_ view: UIView, edgeInsets: UIEdgeInsets) {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(view)
@@ -34,3 +35,50 @@ extension UIView {
     }
 }
 
+// MARK: - Loading From Nib
+extension UIView {
+    
+    /// Loads the view from the nib with the same name as its class name,
+    /// otherwise app will crash, so you must use it for exactly same nib and class names only.
+    public static func loadFromNib() -> Self {
+        let nibContent = Bundle(for: self).loadNibNamed(className, owner: nil, options: nil)
+        return nibContent!.first(where: { $0 is Self }) as! Self
+    }
+    
+    private static var className: String {
+        let objectClassName = NSStringFromClass(self)
+        let objectClassNameComponents = objectClassName.components(separatedBy: ".")
+        return objectClassNameComponents.last!
+    }
+}
+
+// MARK: - Corner Radius
+extension UIView {
+    
+    /// Rounds specified view corners with the specified raduis.
+    /// 
+    /// - Parameters:
+    ///   - corners: Corners to round.
+    ///   - radius: The radius of each corner oval.
+    public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        if radius == 0 {
+            layer.cornerRadius = 0
+            layer.mask = nil
+            return
+        }
+        
+        if corners == .allCorners {
+            layer.cornerRadius = radius
+            layer.mask = nil
+            return
+        }
+        
+        let cornerRadii = CGSize(width: radius, height: radius)
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        
+        layer.cornerRadius = 0
+        layer.mask = mask
+    }
+}

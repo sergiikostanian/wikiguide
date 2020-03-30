@@ -21,9 +21,10 @@ enum APIModelMapper {
     }
     
     static func makeWikiArticleDetails(from apiModel: APIModel.WikiArticleDetailsResponse.Query.ArticleDetails) -> WikiArticleDetails {
+        let imageFiles = apiModel.images?.map({$0.title}) ?? []
         return WikiArticleDetails(pageId: apiModel.pageid, 
                                   title: apiModel.title, 
-                                  description: apiModel.description, 
-                                  imageFiles: apiModel.images.map({$0.title}))
+                                  description: apiModel.description ?? "", 
+                                  imageFiles: imageFiles)
     }
 }

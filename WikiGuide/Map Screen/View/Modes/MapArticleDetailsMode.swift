@@ -17,7 +17,7 @@ final class MapArticleDetailsMode: NSObject, MapMode {
     private weak var mapView: MKMapView!
     private var mapViewModel: MapViewModeling
 
-    let detailsView = WikiArticleDetailsView()
+    let detailsView = WikiArticleDetailsView.loadFromNib()
 
     init(mapVC: MapVC, mapView: MKMapView, mapViewModel: MapViewModeling) {
         self.mapVC = mapVC
@@ -47,6 +47,16 @@ final class MapArticleDetailsMode: NSObject, MapMode {
             }
             
             mapViewModel.fetchWikiArticleDetails(by: selectedAnnotation.article.pageId) { [weak self] (result) in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let details):
+                    strongSelf.detailsView.fill(with: details)
+                    strongSelf.mapViewModel.fetchImages(for: details) { (images) in
+                        strongSelf.detailsView.images = images
+                    }
+                case .failure(let error):
+                    strongSelf.mapVC.showError(error)
+                }
                 print(result)
             }
         default:

@@ -12,22 +12,34 @@ final class WikiArticleDetailsView: UIView {
     
     var didTapOverlay: (() -> Void)?
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    var images: [UIImage] = [] {
+        didSet {
+            didSetImages(images)
+        }
+    }
     
-    private var hidingConstraint: NSLayoutConstraint?
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: Outlets
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var imagesCollectionView: UICollectionView!
+    @IBOutlet private weak var hidingConstraint: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         setup()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.roundCorners([.topLeft, .topRight], radius: 12)
     }
-    
     // MARK: - Public Methods
+    
+    func fill(with articleDetails: WikiArticleDetails) {
+        titleLabel.text = articleDetails.title.capitalized
+        descriptionLabel.text = articleDetails.description.capitalized
+    }
     
     func show(_ completion: (() -> Void)? = nil) {
         hidingConstraint?.isActive = false
@@ -52,43 +64,12 @@ final class WikiArticleDetailsView: UIView {
     // MARK: - Setup
     
     private func setup() {
-        backgroundColor = UIColor.clear
-        
-        setupScrollView()
-        setupContentView()
         setupOverlayTapGestureRecognizer()
+                
+        imagesCollectionView.register(ArticleImageCell.self, forCellWithReuseIdentifier: ArticleImageCell.key)
         
+        hidingConstraint.isActive = true
         layoutIfNeeded()
-    }
-    
-    private func setupScrollView() {
-        scrollView.backgroundColor = .systemYellow
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(scrollView)
-        
-        scrollView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 2/3).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        
-        hidingConstraint = scrollView.topAnchor.constraint(equalTo: bottomAnchor)
-        hidingConstraint?.isActive = true
-        
-        let bottomConstraint = bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-        bottomConstraint.priority = .defaultHigh
-        bottomConstraint.isActive = true
-    }
-    
-    private func setupContentView() {
-        contentView.backgroundColor = .systemYellow
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(contentView)
-        
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
     }
     
     private func setupOverlayTapGestureRecognizer() {
@@ -97,9 +78,26 @@ final class WikiArticleDetailsView: UIView {
         addGestureRecognizer(overlayTapGestureRecognizer)
     }
     
-    // MARK: - Actions
+    // MARK: - Event Handlers
     
     @objc private func overlayTapped() {
         didTapOverlay?()
+    }
+    
+    private func didSetImages(_ images: [UIImage]) {
+        imagesCollectionView.reloadData()
+    }
+}
+
+extension WikiArticleDetailsView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArticleImageCell.key, for: indexPath) as! ArticleImageCell
+        cell.image = images[indexPath.item]
+        return cell
     }
 }

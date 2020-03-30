@@ -13,4 +13,9 @@ public struct WikiArticleDetails {
     let title: String
     let description: String
     let imageFiles: [String]
+    
+    var url: URL? {
+        let path = title.replacingOccurrences(of: " ", with: "_")
+        return URL(string: "https://en.wikipedia.org/wiki/\(path)")
+    }
 }

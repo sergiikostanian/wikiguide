@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 /**
  Map screen ViewModel implementation.
@@ -58,6 +59,10 @@ extension MapViewModel: MapViewModeling {
     
     func fetchWikiArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void) {
         wikiService.fetchArticleDetails(by: id, completion: completion)
+    }
+    
+    func fetchImages(for articleDetails: WikiArticleDetails, completion: @escaping ([UIImage]) -> Void) {
+        wikiService.fetchImages(by: articleDetails.imageFiles, completion: completion)
     }
 }
 

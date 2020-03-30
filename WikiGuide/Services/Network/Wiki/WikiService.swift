@@ -20,6 +20,8 @@ public protocol WikiService {
     /// Fetches wiki article details by specified article id.
     func fetchArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void)
     /// Fetches wiki image by file title.
-    func fetchImage(file: String, completion: @escaping (UIImage?) -> Void)
+    func fetchImage(by file: String, completion: @escaping (UIImage?) -> Void)
+    /// Fetches all wiki images by files titles.
+    func fetchImages(by files: [String], completion: @escaping ([UIImage]) -> Void)
     
 }

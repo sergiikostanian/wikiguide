@@ -20,7 +20,6 @@ extension APIModel {
             }
             let geosearch: [Article]
         }
-        let batchcomplete: String
         let query: Query
     }
 }

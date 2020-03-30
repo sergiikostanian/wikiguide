@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 /**
  This protocol defines Map ViewModel delegation methods.
@@ -27,4 +28,5 @@ protocol MapViewModeling {
     
     func fetchWikiArticles(for location: Location, completion: @escaping (Result<[WikiArticle], Error>) -> Void)
     func fetchWikiArticleDetails(by id: Int, completion: @escaping (Result<WikiArticleDetails, Error>) -> Void)
+    func fetchImages(for articleDetails: WikiArticleDetails, completion: @escaping ([UIImage]) -> Void)
 }

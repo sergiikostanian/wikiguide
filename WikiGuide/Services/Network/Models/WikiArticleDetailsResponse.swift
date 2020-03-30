@@ -18,12 +18,11 @@ extension APIModel {
                 }
                 let pageid: Int
                 let title: String
-                let description: String
-                let images: [Image]
+                let description: String?
+                let images: [Image]?
             }
             let pages: [String: ArticleDetails]
         }
-        let batchcomplete: String
         let query: Query
     }
 }

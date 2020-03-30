@@ -16,6 +16,8 @@
 		8247C80D2431F41600BB7366 /* WikiArticleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C80C2431F41600BB7366 /* WikiArticleDetails.swift */; };
 		8247C80F243210C700BB7366 /* WikiImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C80E243210C700BB7366 /* WikiImageResponse.swift */; };
 		8247C812243212CC00BB7366 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8247C811243212CC00BB7366 /* Kingfisher */; };
+		8247C8142432174E00BB7366 /* WikiArticleDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8247C8132432174E00BB7366 /* WikiArticleDetailsView.xib */; };
+		8247C81624325DE700BB7366 /* ArticleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C81524325DE700BB7366 /* ArticleImageCell.swift */; };
 		82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623B242F253800FA91DF /* AppDelegate.swift */; };
 		82D96240242F253800FA91DF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* MapVC.swift */; };
 		82D96243242F253800FA91DF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Map.storyboard */; };
@@ -52,6 +54,8 @@
 		8247C80A2431F2BF00BB7366 /* WikiArticleDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleDetailsResponse.swift; sourceTree = "<group>"; };
 		8247C80C2431F41600BB7366 /* WikiArticleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleDetails.swift; sourceTree = "<group>"; };
 		8247C80E243210C700BB7366 /* WikiImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiImageResponse.swift; sourceTree = "<group>"; };
+		8247C8132432174E00BB7366 /* WikiArticleDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiArticleDetailsView.xib; sourceTree = "<group>"; };
+		8247C81524325DE700BB7366 /* ArticleImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageCell.swift; sourceTree = "<group>"; };
 		82D96238242F253800FA91DF /* WikiGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				82D962882431088800FA91DF /* WikiArticleDetailsView.swift */,
+				8247C8132432174E00BB7366 /* WikiArticleDetailsView.xib */,
+				8247C81524325DE700BB7366 /* ArticleImageCell.swift */,
 			);
 			path = "Internal Views";
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8247C8142432174E00BB7366 /* WikiArticleDetailsView.xib in Resources */,
 				82D96248242F253E00FA91DF /* LaunchScreen.storyboard in Resources */,
 				82D96245242F253E00FA91DF /* Assets.xcassets in Resources */,
 				82D96243242F253800FA91DF /* Map.storyboard in Resources */,
@@ -370,6 +377,7 @@
 				82D96260242F46A900FA91DF /* APIModel.swift in Sources */,
 				82D9626E242F98F700FA91DF /* LocationManager.swift in Sources */,
 				82D962792430755800FA91DF /* WikiArticle.swift in Sources */,
+				8247C81624325DE700BB7366 /* ArticleImageCell.swift in Sources */,
 				82D96253242F377000FA91DF /* DependencyContainer.swift in Sources */,
 				82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */,
 				82D962892431088800FA91DF /* WikiArticleDetailsView.swift in Sources */,

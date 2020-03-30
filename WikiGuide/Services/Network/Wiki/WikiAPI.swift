@@ -22,6 +22,8 @@ public class WikiAPI {
     private let baseURL = URL(string: "https://en.wikipedia.org/w/api.php")!
     private let httpClient = HTTPClient()
 
+    private let imageLoadingDispatchGroup = DispatchGroup()
+    
 }
 
 extension WikiAPI: WikiService {
@@ -94,7 +96,7 @@ extension WikiAPI: WikiService {
         }
     }
     
-    public func fetchImage(file: String, completion: @escaping (UIImage?) -> Void) {
+    public func fetchImage(by file: String, completion: @escaping (UIImage?) -> Void) {
         guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
             completion(nil)
             return
@@ -138,5 +140,20 @@ extension WikiAPI: WikiService {
         }
     }
     
+    public func fetchImages(by files: [String], completion: @escaping ([UIImage]) -> Void) {
+        var images: [UIImage] = []
+        for file in files {
+            imageLoadingDispatchGroup.enter()
+            fetchImage(by: file) { [weak self] (image) in
+                self?.imageLoadingDispatchGroup.leave()
+                if let image = image {
+                    images.append(image)
+                }
+            }
+        }
+        imageLoadingDispatchGroup.notify(queue: .main) { 
+            completion(images)
+        }
+    }
 //    https://en.wikipedia.org/w/api.php?action=query& titles=File:Albert%20Einstein%20Head.jpg& prop=imageinfo&iiprop=url
 }
