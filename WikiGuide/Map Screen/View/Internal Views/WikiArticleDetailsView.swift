@@ -10,8 +10,12 @@ import UIKit
 
 final class WikiArticleDetailsView: UIView {
     
+    // MARK: Callback Blocks
     var didTapOverlay: (() -> Void)?
-    
+    var didTapOpenInWiki: (() -> Void)?
+    var didTapGetThere: (() -> Void)?
+
+    // MARK: Public Properties
     var images: [UIImage] = [] {
         didSet {
             didSetImages(images)
@@ -35,8 +39,8 @@ final class WikiArticleDetailsView: UIView {
         super.layoutSubviews()
         scrollView.roundCorners([.topLeft, .topRight], radius: 12)
     }
-    // MARK: - Public Methods
     
+    // MARK: - Public Methods
     func fill(with articleDetails: WikiArticleDetails) {
         titleLabel.text = articleDetails.title.capitalized
         descriptionLabel.text = articleDetails.description.capitalized
@@ -63,7 +67,6 @@ final class WikiArticleDetailsView: UIView {
     }
     
     // MARK: - Setup
-    
     private func setup() {
         setupOverlayTapGestureRecognizer()
         
@@ -83,18 +86,26 @@ final class WikiArticleDetailsView: UIView {
     }
     
     // MARK: - Event Handlers
-    
     @objc private func overlayTapped() {
         didTapOverlay?()
     }
     
+    @IBAction func openWikiButtonTapped(_ sender: UIButton) {
+        didTapOpenInWiki?()
+    }
+    
+    @IBAction func getThereButtonTapped(_ sender: UIButton) {
+        didTapGetThere?()
+    }
+    
     private func didSetImages(_ images: [UIImage]) {
-        imagesLoadingIndicatior.stopAnimating()
+        imagesLoadingIndicatior.isHidden = true
         imagesCollectionView.isHidden = images.isEmpty
         imagesCollectionView.reloadData()
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension WikiArticleDetailsView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

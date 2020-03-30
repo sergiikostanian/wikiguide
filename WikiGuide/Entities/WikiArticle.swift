@@ -13,4 +13,9 @@ public struct WikiArticle {
     let title: String
     let latitude: Double
     let longitude: Double
+    
+    var url: URL? {
+        let path = title.replacingOccurrences(of: " ", with: "_")
+        return URL(string: "https://en.wikipedia.org/wiki/\(path)")
+    }
 }

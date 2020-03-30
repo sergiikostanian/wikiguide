@@ -35,7 +35,7 @@
                                             <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eef-rf-RfV">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eef-rf-RfV">
                                             <rect key="frame" x="0.0" y="53.666666666666629" width="315" height="20"/>
                                         </activityIndicatorView>
                                         <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ole-lg-tHb">
@@ -61,6 +61,9 @@
                                             <state key="normal" title="Open on Wikipedia">
                                                 <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="openWikiButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="i68-c1-3Z7"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vcv-gT-uny">
                                             <rect key="frame" x="0.0" y="209.66666666666669" width="315" height="30"/>
@@ -87,6 +90,9 @@
                                             <state key="normal" title="Get There">
                                                 <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="getThereButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="NP6-hy-EV3"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbk-tW-RAb">
                                             <rect key="frame" x="0.0" y="287.66666666666669" width="315" height="200"/>

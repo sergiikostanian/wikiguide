@@ -26,7 +26,7 @@ final class MapArticleDetailsMode: NSObject, MapMode {
     }
 
     func performTransition(from oldMode: MapMode?, animated: Bool) {
-        mapView.delegate = self
+        mapView.delegate = nil
 
         switch oldMode {
         case is MapMainMode:            
@@ -41,31 +41,37 @@ final class MapArticleDetailsMode: NSObject, MapMode {
             mapVC.view.addSubviewAndStretchToFill(detailsView)
             mapVC.view.layoutIfNeeded()
             
-            detailsView.show()
-            detailsView.didTapOverlay = { [weak self] in
-                self?.mapVC.setState(.main)
-            }
+            setupDetailsView(with: selectedAnnotation.article)
             
-            mapViewModel.fetchWikiArticleDetails(by: selectedAnnotation.article.pageId) { [weak self] (result) in
-                guard let strongSelf = self else { return }
-                switch result {
-                case .success(let details):
-                    strongSelf.detailsView.fill(with: details)
-                    strongSelf.mapViewModel.fetchImages(for: details) { (images) in
-                        strongSelf.detailsView.images = images
-                    }
-                case .failure(let error):
-                    strongSelf.mapVC.showError(error)
-                }
-                print(result)
-            }
         default:
             preconditionFailure("Unknown MapMode transition")
         }
     }
     
-}
-
-extension MapArticleDetailsMode: MKMapViewDelegate {
-    
+    private func setupDetailsView(with article: WikiArticle) {
+        detailsView.show()
+        detailsView.didTapOverlay = { [weak self] in
+            self?.mapVC.setState(.main)
+        }
+        detailsView.didTapOpenInWiki = { [weak self] in
+            self?.mapViewModel.openWikiArticleInSafari(article)
+        }
+        detailsView.didTapGetThere = { [weak self] in
+            
+        }
+        
+        mapViewModel.fetchWikiArticleDetails(by: article.pageId) { [weak self] (result) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let details):
+                strongSelf.detailsView.fill(with: details)
+                strongSelf.mapViewModel.fetchImages(for: details) { (images) in
+                    strongSelf.detailsView.images = images
+                }
+            case .failure(let error):
+                strongSelf.mapVC.showError(error)
+            }
+            print(result)
+        }
+    }
 }

@@ -64,6 +64,12 @@ extension MapViewModel: MapViewModeling {
     func fetchImages(for articleDetails: WikiArticleDetails, completion: @escaping ([UIImage]) -> Void) {
         wikiService.fetchImages(by: articleDetails.imageFiles, completion: completion)
     }
+    
+    func openWikiArticleInSafari(_ article: WikiArticle) {
+        guard let url = article.url else { return }
+        UIApplication.shared.open(url)
+    }
+
 }
 
 // MARK: - LocationServiceObserver
