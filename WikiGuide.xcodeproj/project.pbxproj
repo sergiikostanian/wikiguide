@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8247C7FF2431C8A300BB7366 /* MKMapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C7FE2431C8A300BB7366 /* MKMapViewExtension.swift */; };
+		8247C8022431D21800BB7366 /* MapMainMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8012431D21800BB7366 /* MapMainMode.swift */; };
+		8247C8042431D27200BB7366 /* MapMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8032431D27200BB7366 /* MapMode.swift */; };
+		8247C8062431D37A00BB7366 /* MapArticleDetailsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8052431D37A00BB7366 /* MapArticleDetailsMode.swift */; };
+		8247C8082431D98800BB7366 /* MapNavigationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8072431D98800BB7366 /* MapNavigationMode.swift */; };
 		82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623B242F253800FA91DF /* AppDelegate.swift */; };
 		82D96240242F253800FA91DF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* MapVC.swift */; };
 		82D96243242F253800FA91DF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Map.storyboard */; };
@@ -18,7 +23,6 @@
 		82D9625B242F43BB00FA91DF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625A242F43BB00FA91DF /* HTTPClient.swift */; };
 		82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625C242F45B300FA91DF /* WikiAPI.swift */; };
 		82D96260242F46A900FA91DF /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9625F242F46A900FA91DF /* APIModel.swift */; };
-		82D96266242F66D800FA91DF /* MapScreenStateSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */; };
 		82D96268242F96F100FA91DF /* WikiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D96267242F96F100FA91DF /* WikiService.swift */; };
 		82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9626B242F98EC00FA91DF /* LocationService.swift */; };
 		82D9626E242F98F700FA91DF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9626D242F98F700FA91DF /* LocationManager.swift */; };
@@ -31,9 +35,16 @@
 		82D96280243099D600FA91DF /* MapViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9627F243099D600FA91DF /* MapViewModeling.swift */; };
 		82D962832430A7B500FA91DF /* AlertableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D962822430A7B500FA91DF /* AlertableViewController.swift */; };
 		82D962862430CB6F00FA91DF /* WikiArticleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D962852430CB6F00FA91DF /* WikiArticleAnnotation.swift */; };
+		82D962892431088800FA91DF /* WikiArticleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D962882431088800FA91DF /* WikiArticleDetailsView.swift */; };
+		82D9628B2431174600FA91DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9628A2431174600FA91DF /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8247C7FE2431C8A300BB7366 /* MKMapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtension.swift; sourceTree = "<group>"; };
+		8247C8012431D21800BB7366 /* MapMainMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMainMode.swift; sourceTree = "<group>"; };
+		8247C8032431D27200BB7366 /* MapMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMode.swift; sourceTree = "<group>"; };
+		8247C8052431D37A00BB7366 /* MapArticleDetailsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapArticleDetailsMode.swift; sourceTree = "<group>"; };
+		8247C8072431D98800BB7366 /* MapNavigationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationMode.swift; sourceTree = "<group>"; };
 		82D96238242F253800FA91DF /* WikiGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -48,7 +59,6 @@
 		82D9625A242F43BB00FA91DF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		82D9625C242F45B300FA91DF /* WikiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiAPI.swift; sourceTree = "<group>"; };
 		82D9625F242F46A900FA91DF /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
-		82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenStateSwitcher.swift; sourceTree = "<group>"; };
 		82D96267242F96F100FA91DF /* WikiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiService.swift; sourceTree = "<group>"; };
 		82D9626B242F98EC00FA91DF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		82D9626D242F98F700FA91DF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -61,6 +71,8 @@
 		82D9627F243099D600FA91DF /* MapViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModeling.swift; sourceTree = "<group>"; };
 		82D962822430A7B500FA91DF /* AlertableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertableViewController.swift; sourceTree = "<group>"; };
 		82D962852430CB6F00FA91DF /* WikiArticleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleAnnotation.swift; sourceTree = "<group>"; };
+		82D962882431088800FA91DF /* WikiArticleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleDetailsView.swift; sourceTree = "<group>"; };
+		82D9628A2431174600FA91DF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8247C8002431D1FA00BB7366 /* Modes */ = {
+			isa = PBXGroup;
+			children = (
+				8247C8032431D27200BB7366 /* MapMode.swift */,
+				8247C8012431D21800BB7366 /* MapMainMode.swift */,
+				8247C8052431D37A00BB7366 /* MapArticleDetailsMode.swift */,
+				8247C8072431D98800BB7366 /* MapNavigationMode.swift */,
+			);
+			path = Modes;
+			sourceTree = "<group>";
+		};
+		8247C8092431DD1C00BB7366 /* Internal Views */ = {
+			isa = PBXGroup;
+			children = (
+				82D962882431088800FA91DF /* WikiArticleDetailsView.swift */,
+			);
+			path = "Internal Views";
+			sourceTree = "<group>";
+		};
 		82D9622F242F253800FA91DF = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				82D962822430A7B500FA91DF /* AlertableViewController.swift */,
+				82D9628A2431174600FA91DF /* UIViewExtension.swift */,
+				8247C7FE2431C8A300BB7366 /* MKMapViewExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -220,8 +253,9 @@
 		82D962872430DF5D00FA91DF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8247C8002431D1FA00BB7366 /* Modes */,
+				8247C8092431DD1C00BB7366 /* Internal Views */,
 				82D9623F242F253800FA91DF /* MapVC.swift */,
-				82D96265242F66D800FA91DF /* MapScreenStateSwitcher.swift */,
 				82D96241242F253800FA91DF /* Map.storyboard */,
 			);
 			path = View;
@@ -302,12 +336,15 @@
 				82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */,
 				82D96280243099D600FA91DF /* MapViewModeling.swift in Sources */,
 				82D9625B242F43BB00FA91DF /* HTTPClient.swift in Sources */,
+				8247C8022431D21800BB7366 /* MapMainMode.swift in Sources */,
 				82D9627B2430777C00FA91DF /* APIModelMapper.swift in Sources */,
 				82D96268242F96F100FA91DF /* WikiService.swift in Sources */,
 				82D96276242FE5EB00FA91DF /* WikiArticlesResponse.swift in Sources */,
-				82D96266242F66D800FA91DF /* MapScreenStateSwitcher.swift in Sources */,
 				82D96255242F37B500FA91DF /* DependencyManager.swift in Sources */,
+				8247C7FF2431C8A300BB7366 /* MKMapViewExtension.swift in Sources */,
 				82D96270242F9BEE00FA91DF /* LocationServiceObserver.swift in Sources */,
+				8247C8062431D37A00BB7366 /* MapArticleDetailsMode.swift in Sources */,
+				8247C8082431D98800BB7366 /* MapNavigationMode.swift in Sources */,
 				82D96274242FAA6000FA91DF /* DependencyInjectable.swift in Sources */,
 				82D962832430A7B500FA91DF /* AlertableViewController.swift in Sources */,
 				82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */,
@@ -316,9 +353,12 @@
 				82D962792430755800FA91DF /* WikiArticle.swift in Sources */,
 				82D96253242F377000FA91DF /* DependencyContainer.swift in Sources */,
 				82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */,
+				82D962892431088800FA91DF /* WikiArticleDetailsView.swift in Sources */,
+				82D9628B2431174600FA91DF /* UIViewExtension.swift in Sources */,
 				82D962862430CB6F00FA91DF /* WikiArticleAnnotation.swift in Sources */,
 				82D96258242F37E800FA91DF /* ObserverContainer.swift in Sources */,
 				82D9627D2430847B00FA91DF /* MapViewModel.swift in Sources */,
+				8247C8042431D27200BB7366 /* MapMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

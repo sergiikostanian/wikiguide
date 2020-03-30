@@ -9,56 +9,51 @@
 import UIKit
 import MapKit
 
+// TODO: Rename to MapState
 enum MapScreenState {
     case main
     case articleDetails
-    case routeSuggestions
+    case navigation
 }
 
 final class MapVC: UIViewController, AlertableViewController {
 
+    // MARK: Dependencies
     private var dependencyManager: DependencyManager!
-    private(set) var viewModel: MapViewModeling!
+    private var viewModel: MapViewModeling!
     
-    private var stateSwitcher: MapScreenStateSwitcher!
+    // MARK: State Properties
     private var state: MapScreenState?
-    
+    private var mode: MapMode?
+
+    // MARK: View Properties
     @IBOutlet private weak var mapView: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        stateSwitcher = MapScreenStateSwitcher(mapVC: self)
-        mapView.delegate = self
-    }
-    
-    func setState(_ state: MapScreenState, animated: Bool = true) {
-        stateSwitcher.performTransition(from: self.state, to: state, animated: animated)
-        self.state = state
-    }
-}
-
-extension MapVC {
-    
-    func centerMap(latitude: Double, longitude: Double, radius: CLLocationDistance, animated: Bool) {
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: radius * 2.0, longitudinalMeters: radius * 2.0)
-        mapView.setRegion(region, animated: animated)
-    }
-
-    func displayArticlesAnnotations(_ annotations: [WikiArticleAnnotation]) {
-        let oldArticlesAnnotations = mapView.annotations.filter({ $0 is WikiArticleAnnotation })
-        mapView.removeAnnotations(oldArticlesAnnotations)
-        mapView.showAnnotations(annotations, animated: true)
-    }
-}
-
-extension MapVC: MKMapViewDelegate {
-    
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         setState(.main)
     }
     
+    func setState(_ state: MapScreenState, animated: Bool = true) {
+        guard self.state != state else { return }
+        
+        let newMode: MapMode
+        
+        switch state {
+        case .main:
+            newMode = MapMainMode(mapVC: self, mapView: mapView, mapViewModel: viewModel)
+        case .articleDetails:
+            newMode = MapArticleDetailsMode(mapVC: self, mapView: mapView, mapViewModel: viewModel)
+        case .navigation:
+            newMode = MapNavigationMode()
+        }
+        
+        newMode.context = mode?.context ?? .init()
+        newMode.performTransition(from: mode, animated: animated)
+        mode = newMode
+        self.state = state
+    }
 }
 
 extension MapVC: DependencyInjectable {
