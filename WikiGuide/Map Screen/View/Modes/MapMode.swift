@@ -28,6 +28,7 @@ struct MapModeContext {
     
     var selectedAnnotation: WikiArticleAnnotation?
     var articleDetails: WikiArticleDetails?
+    var routeSuggestion: RouteSuggestion?
     var articleImages: [UIImage] = []
     
     var annotations: [WikiArticleAnnotation] = []

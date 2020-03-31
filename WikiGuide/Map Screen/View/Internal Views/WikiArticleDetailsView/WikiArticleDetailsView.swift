@@ -30,13 +30,20 @@ final class WikiArticleDetailsView: UIView {
     // MARK: Outlets
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var contentView: UIView!
+    
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    
     @IBOutlet private weak var imagesLoadingIndicatior: UIActivityIndicatorView!
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
-    @IBOutlet private weak var hidingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet private weak var routeSuggestionLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var routeSuggestionView: UIView!
     @IBOutlet private weak var routeView: RouteView!
     
+    @IBOutlet private weak var hidingConstraint: NSLayoutConstraint!
+    
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -88,6 +95,8 @@ final class WikiArticleDetailsView: UIView {
         contentView.layer.shadowRadius = 3.0
         contentView.layer.masksToBounds = false
         
+        routeSuggestionView.isHidden = true
+        
         hidingConstraint.isActive = true
         layoutIfNeeded()
     }
@@ -118,7 +127,9 @@ final class WikiArticleDetailsView: UIView {
     }
     
     private func didSetRouteSuggestion(_ routeSuggestion: RouteSuggestion?) {
+        routeSuggestionLoadingIndicator.stopAnimating()
         guard let routeSuggestion = routeSuggestion else { return }
+        routeSuggestionView.isHidden = false
         routeView.fill(with: routeSuggestion)
         layoutIfNeeded()
     }

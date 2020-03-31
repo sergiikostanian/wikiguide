@@ -66,6 +66,7 @@ final class MapArticleDetailsMode: NSObject, MapMode {
 
         detailsView.didTapOverlay = { [weak self] in
             self?.context.articleDetails = nil
+            self?.context.routeSuggestion = nil
             self?.context.articleImages = []
             self?.mapVC.setState(.main)
         }
@@ -76,8 +77,10 @@ final class MapArticleDetailsMode: NSObject, MapMode {
             self?.mapVC.setState(.navigation)
         }
         
-        if let articleDetails = context.articleDetails {
+        if let articleDetails = context.articleDetails,
+            let routeSuggestion = context.routeSuggestion {
             detailsView.fill(with: articleDetails)
+            detailsView.routeSuggestion = routeSuggestion
             detailsView.images = context.articleImages
             detailsView.layoutIfNeeded()
             return
@@ -104,6 +107,7 @@ final class MapArticleDetailsMode: NSObject, MapMode {
         mapViewModel.fetchRouteSuggestion(from: userLocation, to: (latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)) { [weak self] result in
             guard let value = try? result.get() else { return }
             self?.detailsView.routeSuggestion = value
+            self?.context.routeSuggestion = value
         }
     }
     

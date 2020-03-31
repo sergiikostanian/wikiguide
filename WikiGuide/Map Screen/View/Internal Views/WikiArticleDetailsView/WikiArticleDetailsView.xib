@@ -21,7 +21,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="709"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gru-Jc-JLx">
-                                    <rect key="frame" x="30" y="30" width="315" height="509"/>
+                                    <rect key="frame" x="30" y="30" width="315" height="554"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvL-Lo-2Qq">
                                             <rect key="frame" x="0.0" y="0.0" width="315" height="22"/>
@@ -110,11 +110,18 @@
                                                 <action selector="getThereButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="NP6-hy-EV3"/>
                                             </connections>
                                         </button>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IQd-vI-sRc">
+                                            <rect key="frame" x="0.0" y="305" width="315" height="37"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="5qM-cY-cFp"/>
+                                            </constraints>
+                                            <color key="color" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </activityIndicatorView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbk-tW-RAb">
-                                            <rect key="frame" x="0.0" y="305" width="315" height="204"/>
+                                            <rect key="frame" x="0.0" y="350" width="315" height="204"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxG-zu-Jsl">
-                                                    <rect key="frame" x="0.0" y="10" width="144.33333333333334" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Suggestion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxG-zu-Jsl">
+                                                    <rect key="frame" x="0.0" y="10" width="137" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="72e-OX-sv9"/>
                                                     </constraints>
@@ -188,6 +195,8 @@
                 <outlet property="hidingConstraint" destination="wDR-xV-x4N" id="12V-ui-zts"/>
                 <outlet property="imagesCollectionView" destination="ole-lg-tHb" id="pDA-wH-WLm"/>
                 <outlet property="imagesLoadingIndicatior" destination="eef-rf-RfV" id="otT-ch-5Ar"/>
+                <outlet property="routeSuggestionLoadingIndicator" destination="IQd-vI-sRc" id="trh-My-nzi"/>
+                <outlet property="routeSuggestionView" destination="hbk-tW-RAb" id="Rof-DL-48b"/>
                 <outlet property="routeView" destination="kqC-uv-eDB" id="aSs-gG-Bq6"/>
                 <outlet property="scrollView" destination="fu3-XE-X0m" id="hdB-cx-HuM"/>
                 <outlet property="titleLabel" destination="mvL-Lo-2Qq" id="fUq-Xt-RYi"/>
