@@ -23,6 +23,14 @@ protocol MapMode: AnyObject {
 
 /// Made to simplify data flows between modes.
 struct MapModeContext {
+    
+    var userLocation: (latitude: Double, longitude: Double)?
+    
     var selectedAnnotation: WikiArticleAnnotation?
+    var articleDetails: WikiArticleDetails?
+    var articleImages: [UIImage] = []
+    
+    var annotations: [WikiArticleAnnotation] = []
     var originalMapRect: MKMapRect?
+    
 }

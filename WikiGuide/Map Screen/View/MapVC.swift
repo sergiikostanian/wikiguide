@@ -45,7 +45,7 @@ final class MapVC: UIViewController, AlertableViewController {
         case .articleDetails:
             newMode = MapArticleDetailsMode(mapVC: self, mapView: mapView, mapViewModel: viewModel)
         case .navigation:
-            newMode = MapNavigationMode()
+            newMode = MapNavigationMode(mapVC: self, mapView: mapView, mapViewModel: viewModel)
         }
         
         newMode.context = mode?.context ?? .init()

@@ -112,11 +112,27 @@
 		8247C8092431DD1C00BB7366 /* Internal Views */ = {
 			isa = PBXGroup;
 			children = (
+				8247C818243313AA00BB7366 /* NavigationView */,
+				8247C8172433138000BB7366 /* WikiArticleDetailsView */,
+			);
+			path = "Internal Views";
+			sourceTree = "<group>";
+		};
+		8247C8172433138000BB7366 /* WikiArticleDetailsView */ = {
+			isa = PBXGroup;
+			children = (
 				82D962882431088800FA91DF /* WikiArticleDetailsView.swift */,
 				8247C8132432174E00BB7366 /* WikiArticleDetailsView.xib */,
 				8247C81524325DE700BB7366 /* ArticleImageCell.swift */,
 			);
-			path = "Internal Views";
+			path = WikiArticleDetailsView;
+			sourceTree = "<group>";
+		};
+		8247C818243313AA00BB7366 /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavigationView;
 			sourceTree = "<group>";
 		};
 		82D9622F242F253800FA91DF = {
