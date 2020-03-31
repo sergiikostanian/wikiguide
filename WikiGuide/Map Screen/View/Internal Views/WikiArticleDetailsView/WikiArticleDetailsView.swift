@@ -29,6 +29,7 @@ final class WikiArticleDetailsView: UIView {
     
     // MARK: Outlets
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var imagesLoadingIndicatior: UIActivityIndicatorView!
@@ -43,7 +44,8 @@ final class WikiArticleDetailsView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        scrollView.roundCorners([.topLeft, .topRight], radius: 12)
+        scrollView.contentInset.top = (bounds.height / 3)
+        contentView.layer.shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
     }
     
     // MARK: - Public Methods
@@ -78,6 +80,13 @@ final class WikiArticleDetailsView: UIView {
         descriptionLabel.text = nil
         imagesCollectionView.isHidden = true
         imagesCollectionView.register(ArticleImageCell.self, forCellWithReuseIdentifier: ArticleImageCell.key)
+        
+        contentView.layer.cornerRadius = 15
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = .zero
+        contentView.layer.shadowOpacity = 0.25
+        contentView.layer.shadowRadius = 3.0
+        contentView.layer.masksToBounds = false
         
         hidingConstraint.isActive = true
         layoutIfNeeded()
