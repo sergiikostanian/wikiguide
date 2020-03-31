@@ -129,6 +129,7 @@ extension WikiAPI: WikiService {
                     ImageDownloader.default.downloadImage(with: url) { imageResult in 
                         switch imageResult {
                         case .success(let value):
+                            KingfisherManager.shared.cache.store(value.image, forKey: file)
                             completion(value.image)
                         case .failure:
                             completion(nil)
@@ -145,16 +146,28 @@ extension WikiAPI: WikiService {
         var images: [UIImage] = []
         for file in files {
             imageLoadingDispatchGroup.enter()
+            
+            // Try get cached image. 
+            if KingfisherManager.shared.cache.isCached(forKey: file) {
+                KingfisherManager.shared.cache.retrieveImage(forKey: file) { imageResult in
+                    if let image = try? imageResult.get().image {
+                        images.append(image)
+                    }
+                    self.imageLoadingDispatchGroup.leave()
+                }
+                continue
+            }
+            
+            // Fetch image if it's not cached.
             fetchImage(by: file) { [weak self] (image) in
-                self?.imageLoadingDispatchGroup.leave()
                 if let image = image {
                     images.append(image)
                 }
+                self?.imageLoadingDispatchGroup.leave()
             }
         }
         imageLoadingDispatchGroup.notify(queue: .main) { 
             completion(images)
         }
     }
-//    https://en.wikipedia.org/w/api.php?action=query& titles=File:Albert%20Einstein%20Head.jpg& prop=imageinfo&iiprop=url
 }
