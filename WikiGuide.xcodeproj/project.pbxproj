@@ -56,7 +56,7 @@
 		8247C80E243210C700BB7366 /* WikiImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiImageResponse.swift; sourceTree = "<group>"; };
 		8247C8132432174E00BB7366 /* WikiArticleDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiArticleDetailsView.xib; sourceTree = "<group>"; };
 		8247C81524325DE700BB7366 /* ArticleImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageCell.swift; sourceTree = "<group>"; };
-		82D96238242F253800FA91DF /* WikiGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82D96238242F253800FA91DF /* Wiki Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wiki Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		82D96242242F253800FA91DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		82D96239242F253800FA91DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82D96238242F253800FA91DF /* WikiGuide.app */,
+				82D96238242F253800FA91DF /* Wiki Guide.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 				8247C811243212CC00BB7366 /* Kingfisher */,
 			);
 			productName = WikiGuide;
-			productReference = 82D96238242F253800FA91DF /* WikiGuide.app */;
+			productReference = 82D96238242F253800FA91DF /* Wiki Guide.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -555,7 +555,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = SK.WikiGuide;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Wiki Guide";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -574,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = SK.WikiGuide;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Wiki Guide";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

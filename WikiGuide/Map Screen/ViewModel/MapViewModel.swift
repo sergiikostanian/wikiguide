@@ -78,8 +78,6 @@ extension MapViewModel: LocationServiceObserver {
     func locationService(_ locationService: LocationService, didUpdateLatitude latitude: Double, longitude: Double) {
         fetchUserLocationCompletion?(.success((latitude: latitude, longitude: longitude)))
         fetchUserLocationCompletion = nil
-        
-        debugPrint("🌈 latitude: \(latitude), longitude: \(longitude)")
     }
     
     func locationService(_ locationService: LocationService, didChangeAuthorization status: LocationAuthorizationStatus) {
@@ -91,8 +89,6 @@ extension MapViewModel: LocationServiceObserver {
     func locationService(_ locationService: LocationService, didFailWithError error: Error) {
         fetchUserLocationCompletion?(.failure(error))
         fetchUserLocationCompletion = nil
-        
-        debugPrint(error)
     }
     
 }
