@@ -101,8 +101,9 @@ final class MapArticleDetailsMode: NSObject, MapMode {
         guard let userLocation = context.userLocation else { return }
         guard let selectedAnnotation = context.selectedAnnotation else { return }
         
-        mapViewModel.fetchRouteSuggestion(from: userLocation, to: (latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)) { result in
-            // TODO: Implement
+        mapViewModel.fetchRouteSuggestion(from: userLocation, to: (latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)) { [weak self] result in
+            guard let value = try? result.get() else { return }
+            self?.detailsView.routeSuggestion = value
         }
     }
     

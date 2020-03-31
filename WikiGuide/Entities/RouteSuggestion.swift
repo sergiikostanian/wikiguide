@@ -25,6 +25,23 @@ public struct RouteSuggestion {
         case tram = "TRAM"
         case transit = "TRANSIT"
         case walk = "WALK"
+        
+        var title: String {
+            switch self {
+            case .bicycle: return "Bicycle"
+            case .bus: return "Bus"
+            case .cableCar: return "Cable Car"
+            case .car: return "Car"
+            case .ferry: return "Ferry"
+            case .funicular: return "Funicular"
+            case .gondola: return "Gondola"
+            case .rail: return "Rail"
+            case .subway: return "Subway"
+            case .tram: return "Tram"
+            case .transit: return "Transit"
+            case .walk: return "Walk"
+            }
+        }
     }
 
     /// One unit of the route.

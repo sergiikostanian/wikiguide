@@ -22,6 +22,9 @@
 		8247C81D2433601100BB7366 /* DigitransitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C81C2433601100BB7366 /* DigitransitAPI.swift */; };
 		8247C81F24336F3000BB7366 /* RouteSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C81E24336F3000BB7366 /* RouteSuggestion.swift */; };
 		8247C8212433734600BB7366 /* RouteSuggestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8202433734600BB7366 /* RouteSuggestionResponse.swift */; };
+		8247C82324338D9E00BB7366 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C82224338D9E00BB7366 /* RouteView.swift */; };
+		8247C82524338E5B00BB7366 /* RouteSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C82424338E5B00BB7366 /* RouteSegmentView.swift */; };
+		8247C82724338E7A00BB7366 /* RouteSegmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8247C82624338E7A00BB7366 /* RouteSegmentView.xib */; };
 		82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623B242F253800FA91DF /* AppDelegate.swift */; };
 		82D96240242F253800FA91DF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* MapVC.swift */; };
 		82D96243242F253800FA91DF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Map.storyboard */; };
@@ -64,6 +67,9 @@
 		8247C81C2433601100BB7366 /* DigitransitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitransitAPI.swift; sourceTree = "<group>"; };
 		8247C81E24336F3000BB7366 /* RouteSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSuggestion.swift; sourceTree = "<group>"; };
 		8247C8202433734600BB7366 /* RouteSuggestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSuggestionResponse.swift; sourceTree = "<group>"; };
+		8247C82224338D9E00BB7366 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
+		8247C82424338E5B00BB7366 /* RouteSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSegmentView.swift; sourceTree = "<group>"; };
+		8247C82624338E7A00BB7366 /* RouteSegmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteSegmentView.xib; sourceTree = "<group>"; };
 		82D96238242F253800FA91DF /* Wiki Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wiki Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -120,7 +126,7 @@
 		8247C8092431DD1C00BB7366 /* Internal Views */ = {
 			isa = PBXGroup;
 			children = (
-				8247C818243313AA00BB7366 /* NavigationView */,
+				8247C818243313AA00BB7366 /* RouteView */,
 				8247C8172433138000BB7366 /* WikiArticleDetailsView */,
 			);
 			path = "Internal Views";
@@ -136,11 +142,14 @@
 			path = WikiArticleDetailsView;
 			sourceTree = "<group>";
 		};
-		8247C818243313AA00BB7366 /* NavigationView */ = {
+		8247C818243313AA00BB7366 /* RouteView */ = {
 			isa = PBXGroup;
 			children = (
+				8247C82224338D9E00BB7366 /* RouteView.swift */,
+				8247C82424338E5B00BB7366 /* RouteSegmentView.swift */,
+				8247C82624338E7A00BB7366 /* RouteSegmentView.xib */,
 			);
-			path = NavigationView;
+			path = RouteView;
 			sourceTree = "<group>";
 		};
 		8247C81924335FD700BB7366 /* Digitransit */ = {
@@ -378,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8247C82724338E7A00BB7366 /* RouteSegmentView.xib in Resources */,
 				8247C8142432174E00BB7366 /* WikiArticleDetailsView.xib in Resources */,
 				82D96248242F253E00FA91DF /* LaunchScreen.storyboard in Resources */,
 				82D96245242F253E00FA91DF /* Assets.xcassets in Resources */,
@@ -408,6 +418,7 @@
 				8247C8062431D37A00BB7366 /* MapArticleDetailsMode.swift in Sources */,
 				8247C8082431D98800BB7366 /* MapNavigationMode.swift in Sources */,
 				82D96274242FAA6000FA91DF /* DependencyInjectable.swift in Sources */,
+				8247C82324338D9E00BB7366 /* RouteView.swift in Sources */,
 				82D962832430A7B500FA91DF /* AlertableViewController.swift in Sources */,
 				8247C81D2433601100BB7366 /* DigitransitAPI.swift in Sources */,
 				82D9626C242F98EC00FA91DF /* LocationService.swift in Sources */,
@@ -421,6 +432,7 @@
 				82D9625D242F45B300FA91DF /* WikiAPI.swift in Sources */,
 				82D962892431088800FA91DF /* WikiArticleDetailsView.swift in Sources */,
 				8247C81F24336F3000BB7366 /* RouteSuggestion.swift in Sources */,
+				8247C82524338E5B00BB7366 /* RouteSegmentView.swift in Sources */,
 				82D9628B2431174600FA91DF /* UIViewExtension.swift in Sources */,
 				82D962862430CB6F00FA91DF /* WikiArticleAnnotation.swift in Sources */,
 				82D96258242F37E800FA91DF /* ObserverContainer.swift in Sources */,

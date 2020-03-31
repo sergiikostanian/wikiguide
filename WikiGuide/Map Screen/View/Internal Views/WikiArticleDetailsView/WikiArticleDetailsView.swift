@@ -21,14 +21,20 @@ final class WikiArticleDetailsView: UIView {
             didSetImages(images)
         }
     }
+    var routeSuggestion: RouteSuggestion? {
+        didSet {
+            didSetRouteSuggestion(routeSuggestion)
+        }
+    }
     
     // MARK: Outlets
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet weak var imagesLoadingIndicatior: UIActivityIndicatorView!
+    @IBOutlet private weak var imagesLoadingIndicatior: UIActivityIndicatorView!
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
     @IBOutlet private weak var hidingConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var routeView: RouteView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +43,7 @@ final class WikiArticleDetailsView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        scrollView.roundCorners([.topLeft, .topRight], radius: 12)
+//        scrollView.roundCorners([.topLeft, .topRight], radius: 12)
     }
     
     // MARK: - Public Methods
@@ -49,7 +55,6 @@ final class WikiArticleDetailsView: UIView {
     func show(_ completion: (() -> Void)? = nil) {
         hidingConstraint?.isActive = false
         UIView.animate(withDuration: 0.3, animations: { 
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             self.layoutIfNeeded()
         }) { _ in
             completion?()
@@ -59,7 +64,6 @@ final class WikiArticleDetailsView: UIView {
     func hide(_ completion: (() -> Void)? = nil) {
         hidingConstraint?.isActive = true
         UIView.animate(withDuration: 0.3, animations: { 
-            self.backgroundColor = UIColor.clear
             self.layoutIfNeeded()
         }) { _ in
             completion?()
@@ -102,6 +106,12 @@ final class WikiArticleDetailsView: UIView {
         imagesLoadingIndicatior.stopAnimating()
         imagesCollectionView.isHidden = images.isEmpty
         imagesCollectionView.reloadData()
+    }
+    
+    private func didSetRouteSuggestion(_ routeSuggestion: RouteSuggestion?) {
+        guard let routeSuggestion = routeSuggestion else { return }
+        routeView.fill(with: routeSuggestion)
+        layoutIfNeeded()
     }
 }
 

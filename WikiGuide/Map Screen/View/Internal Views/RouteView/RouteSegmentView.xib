@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="RouteSegmentView" customModule="Wiki_Guide" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TER-Wg-YNO">
+                    <rect key="frame" x="0.0" y="25" width="10" height="10"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="DB2-dH-EyK"/>
+                        <constraint firstAttribute="width" constant="10" id="xrk-ua-Gu5"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QcO-sJ-gpv">
+                    <rect key="frame" x="26" y="14" width="303" height="32.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk - 7 min (300 m)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-we-1yX">
+                            <rect key="frame" x="0.0" y="0.0" width="140" height="18.5"/>
+                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                            <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Richna - Zelena" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7E-mk-IE2">
+                            <rect key="frame" x="0.0" y="18.5" width="74" height="14"/>
+                            <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="12"/>
+                            <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaR-Hb-gvK">
+                    <rect key="frame" x="345" y="22" width="29" height="16.5"/>
+                    <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="14"/>
+                    <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xaR-Hb-gvK" secondAttribute="trailing" id="2jg-Xj-gAi"/>
+                <constraint firstItem="xaR-Hb-gvK" firstAttribute="leading" secondItem="QcO-sJ-gpv" secondAttribute="trailing" constant="16" id="77B-DU-eGm"/>
+                <constraint firstItem="TER-Wg-YNO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7AO-DZ-dmM"/>
+                <constraint firstItem="xaR-Hb-gvK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Eit-Ox-2zZ"/>
+                <constraint firstItem="QcO-sJ-gpv" firstAttribute="leading" secondItem="TER-Wg-YNO" secondAttribute="trailing" constant="16" id="cjL-cC-jNt"/>
+                <constraint firstItem="QcO-sJ-gpv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="jH4-re-oGQ"/>
+                <constraint firstItem="TER-Wg-YNO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pPL-2Q-tdJ"/>
+                <constraint firstAttribute="bottom" secondItem="QcO-sJ-gpv" secondAttribute="bottom" constant="13.5" id="xo2-bX-log"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="circleView" destination="TER-Wg-YNO" id="Okc-3a-9wr"/>
+                <outlet property="detailsLabel" destination="D7E-mk-IE2" id="HhA-mS-Ldb"/>
+                <outlet property="timeLabel" destination="xaR-Hb-gvK" id="e7i-tV-VyG"/>
+                <outlet property="titleLabel" destination="UKL-we-1yX" id="vZY-FA-P7b"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-525"/>
+        </view>
+    </objects>
+</document>
