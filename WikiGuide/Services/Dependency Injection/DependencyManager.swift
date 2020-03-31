@@ -64,6 +64,10 @@ final public class DependencyManager {
         }
         
         container.register { _ in
+            DigitransitAPI() as DigitransitService
+        }
+        
+        container.register { _ in
             LocationManager() as LocationService
         }
         
@@ -71,10 +75,12 @@ final public class DependencyManager {
         container.register { container -> MapViewModeling in
             let locationService: LocationService = try! container.resolve()
             let wikiService: WikiService = try! container.resolve()
-            
+            let digitransitService: DigitransitService = try! container.resolve()
+
             return MapViewModel(dependencyManager: self, 
                                 locationService: locationService, 
-                                wikiService: wikiService)
+                                wikiService: wikiService,
+                                digitransitService: digitransitService)
         }
         
         observers.enumerateObservers { (observer) in

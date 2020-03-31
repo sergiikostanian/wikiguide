@@ -32,4 +32,5 @@ protocol MapViewModeling {
     
     func openWikiArticleInSafari(_ article: WikiArticle)
     
+    func fetchRouteSuggestion(from: Location, to: Location, completion: @escaping (Result<RouteSuggestion, Error>) -> Void)
 }

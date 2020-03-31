@@ -20,15 +20,20 @@ final class MapViewModel {
     private let dependencyManager: DependencyManager
     private let locationService: LocationService
     private let wikiService: WikiService
+    private var digitransitService: DigitransitService!
 
     // MARK: Completion Holders
     private var fetchUserLocationCompletion: ((Result<Location, Error>) -> Void)?
     
-    init(dependencyManager: DependencyManager, locationService: LocationService, wikiService: WikiService) {
+    init(dependencyManager: DependencyManager, 
+         locationService: LocationService, 
+         wikiService: WikiService,
+         digitransitService: DigitransitService) {
         self.dependencyManager = dependencyManager
         self.locationService = locationService
         self.wikiService = wikiService
-        
+        self.digitransitService = digitransitService
+
         self.locationService.add(observer: self)
     }
     
@@ -68,6 +73,10 @@ extension MapViewModel: MapViewModeling {
     func openWikiArticleInSafari(_ article: WikiArticle) {
         guard let url = article.url else { return }
         UIApplication.shared.open(url)
+    }
+
+    func fetchRouteSuggestion(from: Location, to: Location, completion: @escaping (Result<RouteSuggestion, Error>) -> Void) {
+        digitransitService.fetchRouteSuggestion(from: from, to: to, completion: completion)
     }
 
 }

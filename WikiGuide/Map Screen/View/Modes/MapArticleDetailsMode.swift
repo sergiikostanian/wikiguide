@@ -97,6 +97,13 @@ final class MapArticleDetailsMode: NSObject, MapMode {
                 strongSelf.mapVC.showError(error)
             }
         }
+        
+        guard let userLocation = context.userLocation else { return }
+        guard let selectedAnnotation = context.selectedAnnotation else { return }
+        
+        mapViewModel.fetchRouteSuggestion(from: userLocation, to: (latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)) { result in
+            // TODO: Implement
+        }
     }
     
     private func updateVisibleMapRect(with center: CLLocationCoordinate2D) {

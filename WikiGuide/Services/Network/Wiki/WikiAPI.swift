@@ -37,9 +37,9 @@ extension WikiAPI: WikiService {
         components.queryItems = [
             URLQueryItem(name: "action", value: "query"),
             URLQueryItem(name: "list", value: "geosearch"),
-            URLQueryItem(name: "gsradius", value: "5000"),
+            URLQueryItem(name: "gsradius", value: "10000"),
             URLQueryItem(name: "gscoord", value: "\(latitude)|\(longitude)"),
-            URLQueryItem(name: "gslimit", value: "50"),
+            URLQueryItem(name: "gslimit", value: "150"),
             URLQueryItem(name: "format", value: "json")
         ]
         

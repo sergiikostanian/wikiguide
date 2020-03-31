@@ -27,4 +27,19 @@ enum APIModelMapper {
                                   description: apiModel.description ?? "", 
                                   imageFiles: imageFiles)
     }
+    
+    static func makeRouteSuggestion(from apiModel: APIModel.RouteSuggestionResponse.ResposeData.Plan.Itinerary) -> RouteSuggestion {
+        var segments: [RouteSuggestion.Segment] = []
+        for leg in apiModel.legs {
+            let mode = RouteSuggestion.Mode(rawValue: leg.mode) ?? .walk
+            let segment = RouteSuggestion.Segment(startTime: leg.startTime, 
+                                                  endTime: leg.endTime, 
+                                                  mode: mode, 
+                                                  duration: leg.duration, 
+                                                  distance: leg.distance, 
+                                                  details: leg.route?.longName)
+            segments.append(segment)
+        }
+        return RouteSuggestion(segments: segments)
+    }
 }
