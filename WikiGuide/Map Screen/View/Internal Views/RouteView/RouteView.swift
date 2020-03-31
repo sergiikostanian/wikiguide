@@ -14,7 +14,7 @@ final class RouteView: UIStackView {
         arrangedSubviews.forEach({ $0.removeFromSuperview() })
         
         let startView = RouteSegmentView.loadFromNib()
-        startView.fill(with: .start(time: "11:45"))
+        startView.fill(with: .start)
         addArrangedSubview(startView)
         
         for segment in routeSuggestion.segments {
@@ -23,9 +23,11 @@ final class RouteView: UIStackView {
             addArrangedSubview(segmentView)
         }
         
-        let endView = RouteSegmentView.loadFromNib()
-        endView.fill(with: .end(time: "12:59"))
-        addArrangedSubview(endView)
+        if let lastSegment = routeSuggestion.segments.last {
+            let endView = RouteSegmentView.loadFromNib()
+            endView.fill(with: .end(time: lastSegment.endTime))
+            addArrangedSubview(endView)
+        }
     }
     
 }

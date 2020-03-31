@@ -11,9 +11,9 @@ import UIKit
 final class RouteSegmentView: UIView {
     
     enum Mode {
-        case start(time: String)
+        case start
         case segment(segment: RouteSuggestion.Segment)
-        case end(time: String)
+        case end(time: TimeInterval)
         
         var circleColor: UIColor {
             switch self {
@@ -41,25 +41,23 @@ final class RouteSegmentView: UIView {
         circleView.backgroundColor = mode.circleColor
 
         switch mode {
-        case .start(let time):
+        case .start:
             circleView.layer.borderWidth = 0
             titleLabel.text = "Your Location"
             detailsLabel.isHidden = true
-            timeLabel.text = time
+            timeLabel.isHidden = true
             
         case .segment(let value):
             circleView.layer.borderWidth = 2
             detailsLabel.isHidden = value.details == nil
             detailsLabel.text = value.details
-            timeLabel.text = "12:55"
+            timeLabel.text = Formatter.timeFormatter.string(from: Date(timeIntervalSince1970: value.startTime/1000))
             
             var distanceString = ""
             if value.distance >= 1000 {
-                distanceString += "\(Int(value.distance / 1000)) km"
-            }
-            let meters = value.distance.truncatingRemainder(dividingBy: 1000)
-            if meters > 0 {
-                distanceString += "\(Int(meters)) m"
+                distanceString = "\(String(format: "%.2f", value.distance / 1000)) km"
+            } else {
+                distanceString = "\(Int(value.distance)) m"
             }
             titleLabel.text = "\(value.mode.title) - \(Int(value.duration / 60)) min (\(distanceString))"
             
@@ -67,7 +65,7 @@ final class RouteSegmentView: UIView {
             circleView.layer.borderWidth = 0
             titleLabel.text = "Your Destination"
             detailsLabel.isHidden = true
-            timeLabel.text = time
+            timeLabel.text = Formatter.timeFormatter.string(from: Date(timeIntervalSince1970: time/1000))
         }
     }
     
