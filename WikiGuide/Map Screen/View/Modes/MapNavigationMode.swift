@@ -58,6 +58,7 @@ final class MapNavigationMode: NSObject, MapMode {
         }
     }
     
+    // MARK: - Close Button Helpers
     func hideAndRemoveCloseButton() {
         closeButtonHidingConstraint?.isActive = true
         UIView.animate(withDuration: 0.3, animations: { 
@@ -98,6 +99,7 @@ final class MapNavigationMode: NSObject, MapMode {
         mapVC.setState(.articleDetails)
     }
     
+    // MARK: - Route Drawing
     private func addRoute(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: source))

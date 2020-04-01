@@ -17,6 +17,8 @@ final class MapMainMode: NSObject, MapMode {
     private weak var mapView: MKMapView!
     private var mapViewModel: MapViewModeling
     
+    private let loadingInfoView = LoadingInfoView()
+    
     init(mapVC: MapVC, mapView: MKMapView, mapViewModel: MapViewModeling) {
         self.mapVC = mapVC
         self.mapView = mapView
@@ -28,6 +30,9 @@ final class MapMainMode: NSObject, MapMode {
 
         switch oldMode {
         case nil:
+            loadingInfoView.title = "Loading initial data..."
+            loadingInfoView.show(in: mapVC.view)
+            
             showNearbyArticles()
             
         case let oldMode as MapArticleDetailsMode:
@@ -50,6 +55,7 @@ final class MapMainMode: NSObject, MapMode {
         }
     }
     
+    // MARK: - Helpers
     private func showNearbyArticles() {
         // Fetch user location.
         mapViewModel.fetchUserLocation { [weak self] (result) in
@@ -62,6 +68,8 @@ final class MapMainMode: NSObject, MapMode {
                 
                 // Fetch and display nearby wiki articles. 
                 strongSelf.mapViewModel.fetchWikiArticles(for: location, completion: { (result) in
+                    strongSelf.loadingInfoView.hide()
+                    
                     switch result {
                     case .success(let articles):
                         let annotations = articles.map({ WikiArticleAnnotation(article: $0) })
@@ -73,6 +81,7 @@ final class MapMainMode: NSObject, MapMode {
                 })
             case .failure(let error):
                 strongSelf.mapVC.showError(error)
+                strongSelf.loadingInfoView.hide()
             }
         }
     }

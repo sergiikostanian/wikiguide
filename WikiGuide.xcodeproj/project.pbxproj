@@ -26,6 +26,7 @@
 		8247C82524338E5B00BB7366 /* RouteSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C82424338E5B00BB7366 /* RouteSegmentView.swift */; };
 		8247C82724338E7A00BB7366 /* RouteSegmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8247C82624338E7A00BB7366 /* RouteSegmentView.xib */; };
 		8247C8292433D06000BB7366 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8282433D06000BB7366 /* TimeFormatter.swift */; };
+		8247C8312434BD6000BB7366 /* LoadingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247C8302434BD6000BB7366 /* LoadingInfoView.swift */; };
 		82D9623C242F253800FA91DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623B242F253800FA91DF /* AppDelegate.swift */; };
 		82D96240242F253800FA91DF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9623F242F253800FA91DF /* MapVC.swift */; };
 		82D96243242F253800FA91DF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D96241242F253800FA91DF /* Map.storyboard */; };
@@ -72,6 +73,7 @@
 		8247C82424338E5B00BB7366 /* RouteSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSegmentView.swift; sourceTree = "<group>"; };
 		8247C82624338E7A00BB7366 /* RouteSegmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteSegmentView.xib; sourceTree = "<group>"; };
 		8247C8282433D06000BB7366 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		8247C8302434BD6000BB7366 /* LoadingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInfoView.swift; sourceTree = "<group>"; };
 		82D96238242F253800FA91DF /* Wiki Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wiki Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D9623B242F253800FA91DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D9623F242F253800FA91DF /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		8247C8092431DD1C00BB7366 /* Internal Views */ = {
 			isa = PBXGroup;
 			children = (
+				8247C82F2434BD4100BB7366 /* LoadingInfoView */,
 				8247C818243313AA00BB7366 /* RouteView */,
 				8247C8172433138000BB7366 /* WikiArticleDetailsView */,
 			);
@@ -161,6 +164,14 @@
 				8247C81C2433601100BB7366 /* DigitransitAPI.swift */,
 			);
 			path = Digitransit;
+			sourceTree = "<group>";
+		};
+		8247C82F2434BD4100BB7366 /* LoadingInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				8247C8302434BD6000BB7366 /* LoadingInfoView.swift */,
+			);
+			path = LoadingInfoView;
 			sourceTree = "<group>";
 		};
 		82D9622F242F253800FA91DF = {
@@ -416,6 +427,7 @@
 				82D96268242F96F100FA91DF /* WikiService.swift in Sources */,
 				82D96276242FE5EB00FA91DF /* WikiArticlesResponse.swift in Sources */,
 				82D96255242F37B500FA91DF /* DependencyManager.swift in Sources */,
+				8247C8312434BD6000BB7366 /* LoadingInfoView.swift in Sources */,
 				8247C7FF2431C8A300BB7366 /* MKMapViewExtension.swift in Sources */,
 				82D96270242F9BEE00FA91DF /* LocationServiceObserver.swift in Sources */,
 				8247C8062431D37A00BB7366 /* MapArticleDetailsMode.swift in Sources */,
