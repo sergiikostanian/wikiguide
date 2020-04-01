@@ -21,7 +21,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="709"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gru-Jc-JLx">
-                                    <rect key="frame" x="30" y="30" width="315" height="554"/>
+                                    <rect key="frame" x="30" y="30" width="315" height="624"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvL-Lo-2Qq">
                                             <rect key="frame" x="0.0" y="0.0" width="315" height="22"/>
@@ -143,6 +143,36 @@
                                                 <constraint firstItem="IxG-zu-Jsl" firstAttribute="top" secondItem="hbk-tW-RAb" secondAttribute="top" constant="10" id="d29-6W-2WK"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbN-Lx-Mru">
+                                            <rect key="frame" x="0.0" y="562" width="315" height="62"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Route Suggestion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnk-cn-QxD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="qd7-zG-VoZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                                    <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The app is using Digitransit to find route suggestion which works only in Finland so far" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSY-5U-6ni">
+                                                    <rect key="frame" x="0.0" y="30" width="315" height="32"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="14"/>
+                                                    <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ZSY-5U-6ni" secondAttribute="trailing" id="ABT-2F-O4x"/>
+                                                <constraint firstItem="ZSY-5U-6ni" firstAttribute="top" secondItem="Wnk-cn-QxD" secondAttribute="bottom" constant="8" id="H8x-pd-asG"/>
+                                                <constraint firstItem="ZSY-5U-6ni" firstAttribute="leading" secondItem="NbN-Lx-Mru" secondAttribute="leading" id="MXf-eD-kQU"/>
+                                                <constraint firstItem="Wnk-cn-QxD" firstAttribute="leading" secondItem="NbN-Lx-Mru" secondAttribute="leading" id="XGn-aC-9k1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wnk-cn-QxD" secondAttribute="trailing" id="YRU-GP-BSe"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZSY-5U-6ni" secondAttribute="bottom" id="pAR-oM-WeO"/>
+                                                <constraint firstItem="Wnk-cn-QxD" firstAttribute="top" secondItem="NbN-Lx-Mru" secondAttribute="top" id="zeF-CC-M1p"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -196,6 +226,7 @@
                 <outlet property="hidingConstraint" destination="wDR-xV-x4N" id="12V-ui-zts"/>
                 <outlet property="imagesCollectionView" destination="ole-lg-tHb" id="pDA-wH-WLm"/>
                 <outlet property="imagesLoadingIndicatior" destination="eef-rf-RfV" id="otT-ch-5Ar"/>
+                <outlet property="noRouteSuggestionView" destination="NbN-Lx-Mru" id="HDX-Gy-MMu"/>
                 <outlet property="openWikiButton" destination="1tR-Fa-mcL" id="mHJ-Fy-oUI"/>
                 <outlet property="routeSuggestionLoadingIndicator" destination="IQd-vI-sRc" id="trh-My-nzi"/>
                 <outlet property="routeSuggestionView" destination="hbk-tW-RAb" id="Rof-DL-48b"/>

@@ -48,6 +48,8 @@ final class WikiArticleDetailsView: UIView {
     @IBOutlet private weak var routeSuggestionView: UIView!
     @IBOutlet private weak var routeView: RouteView!
     
+    @IBOutlet private weak var noRouteSuggestionView: UIView!
+    
     @IBOutlet private weak var hidingConstraint: NSLayoutConstraint!
     
     // MARK: - Lifecycle
@@ -109,6 +111,7 @@ final class WikiArticleDetailsView: UIView {
         contentView.layer.masksToBounds = false
         
         routeSuggestionView.isHidden = true
+        noRouteSuggestionView.isHidden = true
         
         hidingConstraint.isActive = true
         layoutIfNeeded()
@@ -152,7 +155,10 @@ final class WikiArticleDetailsView: UIView {
     
     private func didSetRouteSuggestion(_ routeSuggestion: RouteSuggestion?) {
         routeSuggestionLoadingIndicator.stopAnimating()
-        guard let routeSuggestion = routeSuggestion, !routeSuggestion.segments.isEmpty else { return }
+        guard let routeSuggestion = routeSuggestion, !routeSuggestion.segments.isEmpty else { 
+            noRouteSuggestionView.isHidden = false
+            return
+        }
         routeSuggestionView.isHidden = false
         routeView.fill(with: routeSuggestion)
         layoutIfNeeded()
