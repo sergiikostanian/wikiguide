@@ -72,7 +72,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                             <state key="normal" title="Open on Wikipedia">
-                                                <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.396078431372549" green="0.55686274509803924" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="openWikiButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="i68-c1-3Z7"/>
@@ -104,7 +104,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                             <state key="normal" title="Get There">
-                                                <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.396078431372549" green="0.55686274509803924" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="getThereButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="NP6-hy-EV3"/>

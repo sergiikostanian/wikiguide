@@ -125,7 +125,7 @@ extension MapNavigationMode: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = #colorLiteral(red: 0, green: 0.5066667199, blue: 1, alpha: 1)
+        renderer.strokeColor = #colorLiteral(red: 0.3960784314, green: 0.5568627451, blue: 0.7764705882, alpha: 1)
         renderer.alpha = 0.9
         renderer.lineWidth = 5
         renderer.lineCap = .round

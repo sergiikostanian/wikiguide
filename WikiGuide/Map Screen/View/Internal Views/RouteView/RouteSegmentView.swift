@@ -18,11 +18,11 @@ final class RouteSegmentView: UIView {
         var circleColor: UIColor {
             switch self {
             case .start:
-                return #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+                return #colorLiteral(red: 0, green: 0.4189725816, blue: 1, alpha: 1)
             case .segment:
-                return #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                return #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 1)
             case .end:
-                return #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+                return #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
             }
         }
     }
