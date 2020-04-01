@@ -10,6 +10,8 @@ import Foundation
 
 extension Formatter {
     
+    /// A simple `DateFormatter` that represents time in format  __"H:mm"__.
+    /// Example string representation: 17:45.
     static let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "H:mm"

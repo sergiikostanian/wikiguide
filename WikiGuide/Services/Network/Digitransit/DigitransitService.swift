@@ -16,6 +16,7 @@ public protocol DigitransitService {
     
     typealias Location = (latitude: Double, longitude: Double)
 
+    /// Fetches a suggested route itinerary from location A to location B.
     func fetchRouteSuggestion(from: Location, to: Location, completion: @escaping (Result<RouteSuggestion, Error>) -> Void)
     
 }
