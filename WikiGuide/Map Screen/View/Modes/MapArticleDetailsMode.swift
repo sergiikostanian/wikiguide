@@ -13,11 +13,11 @@ final class MapArticleDetailsMode: NSObject, MapMode {
     
     var context = MapModeContext()
 
+    var detailsView = WikiArticleDetailsView.loadFromNib()
+    
     private weak var mapVC: MapVC!
     private weak var mapView: MKMapView!
     private var mapViewModel: MapViewModeling
-
-    private let detailsView = WikiArticleDetailsView.loadFromNib()
 
     init(mapVC: MapVC, mapView: MKMapView, mapViewModel: MapViewModeling) {
         self.mapVC = mapVC
@@ -34,6 +34,7 @@ final class MapArticleDetailsMode: NSObject, MapMode {
             
             updateVisibleMapRect(with: selectedAnnotation.coordinate)
             addDetailsView(with: selectedAnnotation.article)
+            setupDetailsViewEventHandlers()
             detailsView.show()
 
         case let oldMode as MapNavigationMode:
@@ -43,39 +44,25 @@ final class MapArticleDetailsMode: NSObject, MapMode {
             mapView.addAnnotations(annotationsToAdd)
             mapView.removeOverlays(mapView.overlays)
 
+            detailsView = oldMode.detailsView
+            detailsView.hide { [weak self] in 
+                self?.detailsView.mode = .allDetails
+                self?.detailsView.show()
+            }
+
             oldMode.hideAndRemoveCloseButton()
             
             updateVisibleMapRect(with: selectedAnnotation.coordinate)
-            addDetailsView(with: selectedAnnotation.article)
-            detailsView.show()
+            setupDetailsViewEventHandlers()
 
         default:
             preconditionFailure("Unknown MapMode transition")
         }
     }
     
-    func hideAndRemoveDetailsView() {
-        detailsView.hide {
-            self.detailsView.removeFromSuperview()
-        }
-    }
-
     private func addDetailsView(with article: WikiArticle) {
         mapVC.view.addSubviewAndStretchToFill(detailsView)
         mapVC.view.layoutIfNeeded()
-
-        detailsView.didTapOverlay = { [weak self] in
-            self?.context.articleDetails = nil
-            self?.context.routeSuggestion = nil
-            self?.context.articleImages = []
-            self?.mapVC.setState(.main)
-        }
-        detailsView.didTapOpenInWiki = { [weak self] in
-            self?.mapViewModel.openWikiArticleInSafari(article)
-        }
-        detailsView.didTapGetThere = { [weak self] in
-            self?.mapVC.setState(.navigation)
-        }
         
         if let articleDetails = context.articleDetails,
             let routeSuggestion = context.routeSuggestion {
@@ -108,6 +95,22 @@ final class MapArticleDetailsMode: NSObject, MapMode {
             guard let value = try? result.get() else { return }
             self?.detailsView.routeSuggestion = value
             self?.context.routeSuggestion = value
+        }
+    }
+    
+    private func setupDetailsViewEventHandlers() {
+        detailsView.didTapOverlay = { [weak self] in
+            self?.context.articleDetails = nil
+            self?.context.routeSuggestion = nil
+            self?.context.articleImages = []
+            self?.mapVC.setState(.main)
+        }
+        detailsView.didTapOpenInWiki = { [weak self] in
+            guard let article = self?.context.selectedAnnotation?.article else { return }
+            self?.mapViewModel.openWikiArticleInSafari(article)
+        }
+        detailsView.didTapGetThere = { [weak self] in
+            self?.mapVC.setState(.navigation)
         }
     }
     

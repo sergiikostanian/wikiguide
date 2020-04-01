@@ -40,7 +40,10 @@ final class MapMainMode: NSObject, MapMode {
             context.selectedAnnotation = nil
             context.originalMapRect = nil
 
-            oldMode.hideAndRemoveDetailsView()
+            oldMode.detailsView.hide { 
+                oldMode.detailsView.removeFromSuperview()
+                print("it happend")
+            }
             
         default:
             preconditionFailure("Unknown MapMode transition")

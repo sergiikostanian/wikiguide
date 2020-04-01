@@ -13,6 +13,8 @@ final class MapNavigationMode: NSObject, MapMode {
     
     var context = MapModeContext()
     
+    var detailsView: WikiArticleDetailsView!
+    
     private weak var mapVC: MapVC!
     private weak var mapView: MKMapView!
     private var mapViewModel: MapViewModeling
@@ -34,7 +36,11 @@ final class MapNavigationMode: NSObject, MapMode {
             guard let userLocation = context.userLocation else { return }
             guard let selectedCoordinate = context.selectedAnnotation?.coordinate else { return }
             
-            oldMode.hideAndRemoveDetailsView()
+            detailsView = oldMode.detailsView
+            detailsView.hide { [weak self] in 
+                self?.detailsView.mode = .routeSuggestionOnly
+                self?.detailsView.show()
+            }
             
             let userCoordinate = CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude)
             addRoute(from: userCoordinate, to: selectedCoordinate)
@@ -100,8 +106,12 @@ final class MapNavigationMode: NSObject, MapMode {
         directions.calculate { response, error in
             guard let route = response?.routes.first else { return }
             
-            let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
-            
+            var insets = self.mapVC.view.safeAreaInsets
+            insets.bottom += 100
+            insets.top += 50
+            insets.left += 50
+            insets.right += 50
+
             self.mapView.addOverlay(route.polyline)
             self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: insets, animated: true)
         }

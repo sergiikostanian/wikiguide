@@ -10,21 +10,25 @@ import UIKit
 
 final class WikiArticleDetailsView: UIView {
     
+    enum Mode {
+        case allDetails
+        case routeSuggestionOnly
+    }
+    
     // MARK: Callback Blocks
     var didTapOverlay: (() -> Void)?
     var didTapOpenInWiki: (() -> Void)?
     var didTapGetThere: (() -> Void)?
 
     // MARK: Public Properties
+    var mode: Mode = .allDetails {
+        didSet { didSetMode(mode) }
+    }
     var images: [UIImage] = [] {
-        didSet {
-            didSetImages(images)
-        }
+        didSet { didSetImages(images) }
     }
     var routeSuggestion: RouteSuggestion? {
-        didSet {
-            didSetRouteSuggestion(routeSuggestion)
-        }
+        didSet { didSetRouteSuggestion(routeSuggestion) }
     }
     
     // MARK: Outlets
@@ -36,6 +40,10 @@ final class WikiArticleDetailsView: UIView {
     
     @IBOutlet private weak var imagesLoadingIndicatior: UIActivityIndicatorView!
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
+    
+    @IBOutlet private weak var openWikiButton: UIButton!
+    @IBOutlet private weak var separatorView: UIView!
+    @IBOutlet private weak var getThereButton: UIButton!
     
     @IBOutlet private weak var routeSuggestionLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var routeSuggestionView: UIView!
@@ -51,8 +59,16 @@ final class WikiArticleDetailsView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        scrollView.contentInset.top = (bounds.height / 3)
         contentView.layer.shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+
+        switch mode {
+        case .allDetails:
+            scrollView.contentInset.top = bounds.height / 3
+
+        case .routeSuggestionOnly:
+            scrollView.contentInset.top = bounds.height - (safeAreaInsets.bottom + 100)
+        }
+        scrollView.contentOffset.y = -scrollView.contentInset.top
     }
     
     // MARK: - Public Methods
@@ -120,6 +136,27 @@ final class WikiArticleDetailsView: UIView {
         didTapGetThere?()
     }
     
+    private func didSetMode(_ mode: Mode) {
+        switch mode {
+        case .allDetails:
+            titleLabel.isHidden = false
+            descriptionLabel.isHidden = false
+            imagesCollectionView.isHidden = images.isEmpty
+            openWikiButton.isHidden = false
+            separatorView.isHidden = false
+            getThereButton.isHidden = false
+
+        case .routeSuggestionOnly:
+            titleLabel.isHidden = true
+            descriptionLabel.isHidden = true
+            imagesCollectionView.isHidden = true
+            openWikiButton.isHidden = true
+            separatorView.isHidden = true
+            getThereButton.isHidden = true
+        }
+        layoutIfNeeded()
+    }
+    
     private func didSetImages(_ images: [UIImage]) {
         imagesLoadingIndicatior.stopAnimating()
         imagesCollectionView.isHidden = images.isEmpty
@@ -128,7 +165,7 @@ final class WikiArticleDetailsView: UIView {
     
     private func didSetRouteSuggestion(_ routeSuggestion: RouteSuggestion?) {
         routeSuggestionLoadingIndicator.stopAnimating()
-        guard let routeSuggestion = routeSuggestion else { return }
+        guard let routeSuggestion = routeSuggestion, !routeSuggestion.segments.isEmpty else { return }
         routeSuggestionView.isHidden = false
         routeView.fill(with: routeSuggestion)
         layoutIfNeeded()

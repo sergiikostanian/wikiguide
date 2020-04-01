@@ -41,7 +41,7 @@
                                             <color key="textColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="eef-rf-RfV">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eef-rf-RfV">
                                             <rect key="frame" x="0.0" y="54" width="315" height="37"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="37" id="DrJ-1X-wTF"/>
@@ -110,7 +110,7 @@
                                                 <action selector="getThereButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="NP6-hy-EV3"/>
                                             </connections>
                                         </button>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IQd-vI-sRc">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IQd-vI-sRc">
                                             <rect key="frame" x="0.0" y="305" width="315" height="37"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="37" id="5qM-cY-cFp"/>
@@ -192,13 +192,16 @@
             <connections>
                 <outlet property="contentView" destination="B7C-gF-lI0" id="KL6-XZ-de9"/>
                 <outlet property="descriptionLabel" destination="X8A-vb-Bs2" id="QaT-Ih-j70"/>
+                <outlet property="getThereButton" destination="PVe-gI-263" id="K47-V6-gLs"/>
                 <outlet property="hidingConstraint" destination="wDR-xV-x4N" id="12V-ui-zts"/>
                 <outlet property="imagesCollectionView" destination="ole-lg-tHb" id="pDA-wH-WLm"/>
                 <outlet property="imagesLoadingIndicatior" destination="eef-rf-RfV" id="otT-ch-5Ar"/>
+                <outlet property="openWikiButton" destination="1tR-Fa-mcL" id="mHJ-Fy-oUI"/>
                 <outlet property="routeSuggestionLoadingIndicator" destination="IQd-vI-sRc" id="trh-My-nzi"/>
                 <outlet property="routeSuggestionView" destination="hbk-tW-RAb" id="Rof-DL-48b"/>
                 <outlet property="routeView" destination="kqC-uv-eDB" id="aSs-gG-Bq6"/>
                 <outlet property="scrollView" destination="fu3-XE-X0m" id="hdB-cx-HuM"/>
+                <outlet property="separatorView" destination="Vcv-gT-uny" id="ZIk-Nv-MmR"/>
                 <outlet property="titleLabel" destination="mvL-Lo-2Qq" id="fUq-Xt-RYi"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="-0.36945812807881773"/>
