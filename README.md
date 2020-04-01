@@ -28,3 +28,9 @@ Very simple and reliable library. Provides images downloading and caching functi
 
 
 ### Other
+
+I didn't have billing information on my personal Google Cloud Platform account, so I couldn't use their Directions API service, therefore, I used Digitransit. Since it works only in Finland so far you have to be there or simulate your location in order to see route suggestions.
+
+For route suggestion fetching I used url requests with json content type because it's just 1 request. If I had to deal with a bigger amount of such requests I would connect [Apollo](https://github.com/apollographql/apollo-ios) to the project to make GraphQL requests.
+
+I've implemented very fast but a bit ugly network responses parsing and mapping. Normally I would use [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper) for such kind of work.
