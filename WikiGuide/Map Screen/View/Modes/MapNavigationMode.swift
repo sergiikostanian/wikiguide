@@ -42,6 +42,8 @@ final class MapNavigationMode: NSObject, MapMode {
                 self?.detailsView.show()
             }
             
+            oldMode.hideAndRemoveCloseButton()
+
             let userCoordinate = CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude)
             addRoute(from: userCoordinate, to: selectedCoordinate)
             
@@ -73,14 +75,14 @@ final class MapNavigationMode: NSObject, MapMode {
     }
     
     private func addCloseButton(to rootView: UIView) {
-        closeButton.setImage(UIImage(named: "ArrowLeft"), for: .normal)
+        closeButton.setImage(UIImage(named: "BackButtonIcon"), for: .normal)
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         rootView.addSubview(closeButton)
         closeButton.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: 16).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
-        closeButton.widthAnchor.constraint(equalToConstant: 38).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
         
         let topAnchor = closeButton.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor, constant: 16)
         topAnchor.priority = .defaultHigh

@@ -16,7 +16,6 @@ final class WikiArticleDetailsView: UIView {
     }
     
     // MARK: Callback Blocks
-    var didTapOverlay: (() -> Void)?
     var didTapOpenInWiki: (() -> Void)?
     var didTapGetThere: (() -> Void)?
 
@@ -96,9 +95,7 @@ final class WikiArticleDetailsView: UIView {
     }
     
     // MARK: - Setup
-    private func setup() {
-        setupOverlayTapGestureRecognizer()
-        
+    private func setup() {        
         titleLabel.text = nil
         descriptionLabel.text = nil
         imagesCollectionView.isHidden = true
@@ -117,17 +114,7 @@ final class WikiArticleDetailsView: UIView {
         layoutIfNeeded()
     }
     
-    private func setupOverlayTapGestureRecognizer() {
-        let overlayTapGestureRecognizer = UITapGestureRecognizer()
-        overlayTapGestureRecognizer.addTarget(self, action: #selector(overlayTapped))
-        addGestureRecognizer(overlayTapGestureRecognizer)
-    }
-    
-    // MARK: - Event Handlers
-    @objc private func overlayTapped() {
-        didTapOverlay?()
-    }
-    
+    // MARK: - Event Handlers    
     @IBAction func openWikiButtonTapped(_ sender: UIButton) {
         didTapOpenInWiki?()
     }

@@ -40,9 +40,9 @@ final class MapMainMode: NSObject, MapMode {
             context.selectedAnnotation = nil
             context.originalMapRect = nil
 
+            oldMode.hideAndRemoveCloseButton()
             oldMode.detailsView.hide { 
                 oldMode.detailsView.removeFromSuperview()
-                print("it happend")
             }
             
         default:

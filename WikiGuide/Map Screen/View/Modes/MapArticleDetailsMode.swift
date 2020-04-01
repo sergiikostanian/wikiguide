@@ -19,6 +19,9 @@ final class MapArticleDetailsMode: NSObject, MapMode {
     private weak var mapView: MKMapView!
     private var mapViewModel: MapViewModeling
 
+    private let closeButton = UIButton(frame: .zero)
+    private var closeButtonHidingConstraint: NSLayoutConstraint?
+
     init(mapVC: MapVC, mapView: MKMapView, mapViewModel: MapViewModeling) {
         self.mapVC = mapVC
         self.mapView = mapView
@@ -58,8 +61,12 @@ final class MapArticleDetailsMode: NSObject, MapMode {
         default:
             preconditionFailure("Unknown MapMode transition")
         }
+        
+        addCloseButton(to: mapVC.view)
+        showCloseButton()
     }
     
+    // MARK: - DetailsView Helpers
     private func addDetailsView(with article: WikiArticle) {
         mapVC.view.addSubviewAndStretchToFill(detailsView)
         mapVC.view.layoutIfNeeded()
@@ -99,12 +106,6 @@ final class MapArticleDetailsMode: NSObject, MapMode {
     }
     
     private func setupDetailsViewEventHandlers() {
-        detailsView.didTapOverlay = { [weak self] in
-            self?.context.articleDetails = nil
-            self?.context.routeSuggestion = nil
-            self?.context.articleImages = []
-            self?.mapVC.setState(.main)
-        }
         detailsView.didTapOpenInWiki = { [weak self] in
             guard let article = self?.context.selectedAnnotation?.article else { return }
             self?.mapViewModel.openWikiArticleInSafari(article)
@@ -114,6 +115,51 @@ final class MapArticleDetailsMode: NSObject, MapMode {
         }
     }
     
+    // MARK: - Close Button Helpers
+    func hideAndRemoveCloseButton() {
+        closeButtonHidingConstraint?.isActive = true
+        UIView.animate(withDuration: 0.3, animations: { 
+            self.closeButton.superview?.layoutIfNeeded()
+        }) { _ in
+            self.closeButton.removeFromSuperview()
+        }
+    }
+    
+    private func showCloseButton() {
+        closeButtonHidingConstraint?.isActive = false
+        UIView.animate(withDuration: 0.3) { 
+            self.closeButton.superview?.layoutIfNeeded()
+        }
+    }
+
+    private func addCloseButton(to rootView: UIView) {
+        closeButton.setImage(UIImage(named: "CloseButtonIcon"), for: .normal)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        rootView.addSubview(closeButton)
+        closeButton.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: 16).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
+        
+        let topAnchor = closeButton.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor, constant: 16)
+        topAnchor.priority = .defaultHigh
+        topAnchor.isActive = true
+        
+        closeButtonHidingConstraint = rootView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 16)
+        closeButtonHidingConstraint?.isActive = true
+        
+        rootView.layoutIfNeeded()
+    }
+    
+    @objc private func closeButtonTapped() {
+        context.articleDetails = nil
+        context.routeSuggestion = nil
+        context.articleImages = []
+        mapVC.setState(.main)
+    }
+
+    // MARK: - Map Helpers 
     private func updateVisibleMapRect(with center: CLLocationCoordinate2D) {
         let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
         let region = MKCoordinateRegion(center: center, span: span)
