@@ -51,34 +51,3 @@ extension UIView {
         return objectClassNameComponents.last!
     }
 }
-
-// MARK: - Corner Radius
-extension UIView {
-    
-    /// Rounds specified view corners with the specified raduis.
-    /// 
-    /// - Parameters:
-    ///   - corners: Corners to round.
-    ///   - radius: The radius of each corner oval.
-    public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        if radius == 0 {
-            layer.cornerRadius = 0
-            layer.mask = nil
-            return
-        }
-        
-        if corners == .allCorners {
-            layer.cornerRadius = radius
-            layer.mask = nil
-            return
-        }
-        
-        let cornerRadii = CGSize(width: radius, height: radius)
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        
-        layer.cornerRadius = 0
-        layer.mask = mask
-    }
-}
